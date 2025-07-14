@@ -1,0 +1,21 @@
+# Usa la imagen oficial de Node.js
+FROM node:18-alpine
+
+# Establece el directorio de trabajo
+WORKDIR /app
+
+# Copia los archivos de tu proyecto Next.js
+COPY ./project/package*.json ./
+RUN npm install
+
+# Copia el resto del proyecto
+COPY ./project .
+
+# Build de Next.js
+RUN npm run build
+
+# Puerto expuesto (generalmente 3000 para Next.js)
+EXPOSE 3000
+
+# Comando para iniciar la aplicación
+CMD ["npm", "run", "dev", "--", "--hostname", "0.0.0.0", "--port", "3000"]

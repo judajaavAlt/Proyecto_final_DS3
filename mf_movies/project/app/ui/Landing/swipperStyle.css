@@ -1,0 +1,15 @@
+.swiper-button-prev,
+.swiper-button-next {
+  color: #fbbf24 !important; /* Color amarillo */
+  padding: 0 20px;
+}
+
+.swiper-pagination-bullet {
+  background: #fff !important;
+  opacity: 0.5 !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #fbbf24 !important;
+  opacity: 1 !important;
+}
