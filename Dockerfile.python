@@ -1,0 +1,28 @@
+# Usa la imagen oficial de Python
+FROM python:3.11
+
+# Crea un usuario no-root con directorio home
+RUN useradd --create-home appuser
+
+# Establece la carpeta de trabajo en el home del usuario no-root
+WORKDIR /home/appuser/app
+
+# Copia primero requirements.txt e instala dependencias con usuario root
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copia el código fuente (api.py y db_connection.py)
+COPY api.py .
+COPY db_connection.py .
+
+# Cambia permisos al usuario no-root para evitar problemas
+RUN chown -R appuser:appuser /home/appuser/app
+
+# Cambia al usuario no-root para ejecutar la aplicación
+USER appuser
+
+# Expón el puerto de la aplicación
+EXPOSE 5000
+
+# Ejecuta el comando para iniciar la aplicación FastAPI con uvicorn
+CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "5000"]

@@ -1,0 +1,56 @@
+services:
+  frontend-registro:
+    build:
+      context: ./Registro
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+  frontend-login:
+    build:
+      context: ./Login
+      dockerfile: Dockerfile
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.python
+    ports:
+      - "5000:5000"
+    environment:
+      DB_USER: AJLN
+      DB_PASSWORD: AJLN2025
+      DB_NAME: User
+      DB_HOST: db
+      DB_PORT: 5432
+    depends_on:
+      db:
+        condition: service_healthy
+
+
+  db:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_USER: AJLN
+      POSTGRES_PASSWORD: AJLN2025
+      POSTGRES_DB: User
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "AJLN", "-d", "User"]
+      interval: 10s
+      retries: 5
+
+
+volumes:
+  postgres_data:

@@ -1,0 +1,125 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-weight: 100;
+  background-color: #101727;
+}
+
+.form-login {
+  font-family: Arial, sans-serif;
+  font-weight: 100;
+  width: 330px;
+  height: 80vh;
+  background: #1E2A3A;
+  margin: auto;
+  margin-top: 180px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  padding: 40px 20px;
+  border: 1px solid #B9B9B9;
+  border-radius: 7px;
+  color: white;
+  position: relative; /* Necesario para posicionar el botón de cierre */
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  color: #B9B9B9;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  color: #fff; /* Cambia el color al pasar el mouse */
+}
+
+.form-login h5 {
+  margin: 0;
+  text-align: center;
+  margin-top: -5px;
+  font-size: 20px;
+  font-family: var(--font-sans), Arial, sans-serif;
+}
+
+.form-login h4 {
+  color: #7D8697;
+  margin: 0;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  font-weight: 100;
+}
+
+.controls {
+  width: 100%;
+  border: 1px solid #165FF2;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  padding: 11px 10px;
+  background: #101727;
+  font-size: 13px;
+  font-family: Arial, sans-serif;
+  font-weight: 100;
+  color: white;
+}
+
+.buttons {
+  width: 100%;
+  height: 40px;
+  background: #165FF2;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  margin-bottom: 16px;
+  font-family: var(--font-sans), Arial, sans-serif;
+  font-weight: bold;
+}
+
+.google-button {
+  width: 100%;
+  height: 40px;
+  background: #364153;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  margin-bottom: 16px;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.google-button img {
+  width: 20px;
+  height: 20px;
+}
+
+.form-login p {
+  color: #7D8697;
+  height: 40px;
+  text-align: center;
+  font-size: 12px;
+  font-family: var(--font-sans), Arial, sans-serif;
+}
+
+.form-login a {
+  color: #619FE0;
+  text-decoration: none;
+  font-size: 11px;
+}
+
+.form-login a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,179 @@
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+
+  .modal {
+    position: relative;
+    width: 370px;
+    background: #23182C;
+    border-radius: 18px;
+    box-shadow: 0 8px 40px 0 rgba(0,0,0,0.90);
+    padding: 36px 28px 32px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .closeBtn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #A9A9A9;
+    background: transparent;
+    border: none;
+    font-size: 26px;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.15s;
+  }
+  .closeBtn:hover {
+    color: #fff;
+  }
+
+  .title {
+    color: #fff;
+    font-size: 1.35rem;
+    font-weight: 700;
+    text-align: left;
+    margin-bottom: 2px;
+    letter-spacing: -0.5px;
+  }
+  .subtitle {
+    color: #C7B7DB;
+    font-size: 0.97rem;
+    margin-bottom: 28px;
+  }
+  .input {
+    background: transparent;
+    border: 2px solid #5533FF;
+    border-radius: 9px;
+    padding: 13px 16px;
+    color: #fff;
+    font-size: 1rem;
+    margin-bottom: 0;
+    outline: none;
+    transition: border 0.2s;
+    margin-top: 0;
+    margin-bottom: 10px;
+    width: 90%;
+  }
+  .input:focus {
+    border-color: #A989FF;
+  }
+  .input::placeholder {
+    color: #C7B7DB;
+    opacity: 1;
+    font-size: 1rem;
+  }
+
+  .recaptcha {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 7px;
+    border: 1px solid #ddd;
+    padding: 8px 13px 6px 11px;
+    margin-top: 3px;
+    margin-bottom: 6px;
+    position: relative;
+    min-height: 45px;
+  }
+  .captchaCheckbox {
+    width: 19px;
+    height: 19px;
+    accent-color: #4285F4;
+    margin-right: 7px;
+  }
+  .captchaLabel {
+    color: #222;
+    font-size: 1rem;
+    user-select: none;
+  }
+  .recaptchaImg {
+    width: 30px;
+    height: 30px;
+    margin-left: auto;
+    margin-right: 2px;
+    display: flex;
+    align-items: center;
+  }
+  .recaptchaImg img {
+    width: 100%;
+    height: 100%;
+  }
+  .recaptchaError {
+    position: absolute;
+    left: 55px;
+    bottom: 2px;
+    color: #E23636;
+    font-size: 0.76rem;
+    font-weight: 500;
+  }
+
+  .mainBtn {
+    margin-top: 8px;
+    width: 100%;
+    background: #5533FF;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.08rem;
+    padding: 13px 0;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .mainBtn:hover {
+    background: #6844FF;
+  }
+
+  .googleBtn {
+    margin-top: 18px;
+    margin-bottom: 7px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    background: #fff;
+    color: #333;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 11px 0;
+    border: none;
+    border-radius: 9px;
+    border: 1px solid #E5E7EB;
+    cursor: pointer;
+    justify-content: center;
+    transition: background 0.15s, border 0.15s;
+  }
+  .googleBtn:hover {
+    background: #F3F4F6;
+    border-color: #bbb;
+  }
+  .googleLogo {
+    width: 21px;
+    height: 21px;
+  }
+
+  .signin {
+    text-align: center;
+    font-size: 0.98rem;
+    color: #C7B7DB;
+    margin-top: 17px;
+    margin-bottom: 0;
+  }
+  .signin a {
+    color: #4A90E2;
+    margin-left: 3px;
+    text-decoration: none;
+    transition: text-decoration 0.15s;
+  }
+  .signin a:hover {
+    text-decoration: underline;
+  }
