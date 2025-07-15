@@ -1,7 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'standalone', // <- agrega claramente esta línea aquí
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "www.gstatic.com",
+      },
+    ],
+  },
+  output: "standalone",
 };
 
 export default nextConfig;

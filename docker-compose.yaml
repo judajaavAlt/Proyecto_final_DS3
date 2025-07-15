@@ -1,4 +1,5 @@
 services:
+  # FRONTEND REGISTRO
   frontend-registro:
     build:
       context: ./Registro
@@ -6,8 +7,9 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - backend
+      - saga-orchestrator
 
+  # FRONTEND LOGIN
   frontend-login:
     build:
       context: ./Login
@@ -15,34 +17,52 @@ services:
     ports:
       - "4200:80"
     depends_on:
-      - backend
+      - saga-orchestrator
 
-  backend:
+  # SAGA ORCHESTRATOR (nuevo)
+  saga-orchestrator:
     build:
-      context: .
-      dockerfile: Dockerfile.python
+      context: ./Servicios/saga-orchestrator
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - user-service
+      - email-service
+
+  # USER SERVICE (registro de usuarios)
+  user-service:
+    build:
+      context: ./Servicios/register-user-service
+      dockerfile: Dockerfile
     ports:
       - "5000:5000"
-    environment:
-      DB_USER: AJLN
-      DB_PASSWORD: AJLN2025
-      DB_NAME: User
-      DB_HOST: db
-      DB_PORT: 5432
+    env_file:
+      - .env
     depends_on:
       db:
         condition: service_healthy
 
+  # EMAIL SERVICE (microservicio de correos)
+  email-service:
+    build:
+      context: ./Servicios/email-service
+      dockerfile: Dockerfile
+    ports:
+      - "5001:5001"
+    env_file:
+      - .env
 
+  # BASE DE DATOS
   db:
     image: postgres:16
     restart: always
-    environment:
-      POSTGRES_USER: AJLN
-      POSTGRES_PASSWORD: AJLN2025
-      POSTGRES_DB: User
     ports:
       - "5432:5432"
+    env_file:
+      - .env.db
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
@@ -50,7 +70,6 @@ services:
       test: ["CMD", "pg_isready", "-U", "AJLN", "-d", "User"]
       interval: 10s
       retries: 5
-
 
 volumes:
   postgres_data:

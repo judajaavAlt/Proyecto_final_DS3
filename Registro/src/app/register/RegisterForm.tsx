@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import styles from "./RegisterModal.module.css";
 import { registerUser } from "@/services/userService"; // Ajusta la ruta según tu proyecto
+import Image from "next/image";
+
 
 export default function RegisterModal() {
   const [form, setForm] = useState({
@@ -124,10 +126,12 @@ export default function RegisterModal() {
               {error === "Por favor verifica que no eres un robot." && error}
             </span>
             <div className={styles.recaptchaImg}>
-              <img
-                src="https://www.gstatic.com/recaptcha/api2/logo_48.png"
-                alt="reCAPTCHA"
-              />
+             <Image
+              src="https://www.gstatic.com/recaptcha/api2/logo_48.png"
+              alt="reCAPTCHA"
+              width={48}
+              height={48}
+            />
             </div>
           </div>
           {error && error !== "Por favor verifica que no eres un robot." && (
@@ -141,7 +145,13 @@ export default function RegisterModal() {
           </button>
         </form>
         <div className={styles.googleBtn}>
-          <img src="/google.svg" alt="Google" className={styles.googleLogo} />
+         <Image
+            src="/google.svg"
+            alt="Google"
+            className={styles.googleLogo}
+            width={32}   // Ajusta el tamaño según tu diseño
+            height={32}
+          />
           <span>Sign up with Google</span>
         </div>
         <p className={styles.signin}>
