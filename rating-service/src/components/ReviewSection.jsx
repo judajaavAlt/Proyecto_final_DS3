@@ -2,33 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './ReviewSection.css'; // Importamos los estilos
 
 
-const initialReviews = [
-  {
-    id: 3,
-    author: 'Monkey D. Luffy',
-    avatar: 'https://i.pinimg.com/736x/1e/40/3e/1e403e673934f4e71b2699d799797587.jpg',
-    date: 'March 15, 2024',
-    text: "A visual masterpiece that perfectly captures the spirit of gaming culture. Spielberg's direction brings the virtual world to life in spectacular fashion.",
-    rating: 4,
-  },
-  {
-    id: 2,
-    author: 'Senku',
-    avatar: 'https://i.pinimg.com/736x/e2/21/44/e2214434a938d277748529e87a2c0f65.jpg',
-    date: 'March 15, 2024',
-    text: "A visual masterpiece that perfectly captures the spirit of gaming culture. Spielberg's direction brings the virtual world to life in spectacular fashion.",
-    rating: 5,
-  },
-  {
-    id: 1,
-    author: 'Roronoa Zoro',
-    avatar: 'https://i.pinimg.com/736x/a2/34/a8/a234a81748bff8c12b87b7ac892d1911.jpg',
-    date: 'October 5, 2024',
-    text: "A visual masterpiece that perfectly captures the spirit of gaming culture. Spielberg's direction brings the virtual world to life in spectacular fashion.",
-    rating: 3,
-  },
-];
-
 // Información del usuario actual (en una app real, vendría de la autenticación)
 const currentUser = {
     name: 'Son Goku',
