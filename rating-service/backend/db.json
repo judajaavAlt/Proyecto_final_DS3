@@ -1,0 +1,28 @@
+{
+  "reviews": [
+    {
+      "id": 1752623496382,
+      "author": "Son Goku",
+      "avatar": "https://i.pinimg.com/736x/8a/a5/63/8aa56370a2b535b18413642c22268487.jpg",
+      "rating": 1,
+      "text": "Mala",
+      "date": "2025-07-15"
+    },
+    {
+      "id": 1752623447952,
+      "author": "Son Goku",
+      "avatar": "https://i.pinimg.com/736x/8a/a5/63/8aa56370a2b535b18413642c22268487.jpg",
+      "rating": 5,
+      "text": "Obra de arte",
+      "date": "2025-07-15"
+    },
+    {
+      "id": 1752623439241,
+      "author": "Son Goku",
+      "avatar": "https://i.pinimg.com/736x/8a/a5/63/8aa56370a2b535b18413642c22268487.jpg",
+      "rating": 3,
+      "text": "Me gista",
+      "date": "2025-07-15"
+    }
+  ]
+}
