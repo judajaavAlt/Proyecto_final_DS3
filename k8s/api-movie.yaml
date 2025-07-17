@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-movie
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-movie
+  template:
+    metadata:
+      labels:
+        app: api-movie
+    spec:
+      containers:
+        - name: api-movie
+          image: api-movie:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8000
+          env:
+            - name: DB_HOST
+              value: db-movie
+            - name: DB_PORT
+              value: "5432"
+            - name: DB_NAME
+              value: moviedb
+            - name: DB_USER
+              value: movie
+            - name: DB_PASS
+              value: moviepass
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-movie
+spec:
+  selector:
+    app: api-movie
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
+  type: ClusterIP
