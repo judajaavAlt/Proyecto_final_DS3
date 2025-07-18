@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-user
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-user
+  template:
+    metadata:
+      labels:
+        app: api-user
+    spec:
+      containers:
+        - name: api-user
+          image: api-user:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8000
+          env:
+            - name: DB_HOST
+              value: db-user
+            - name: DB_PORT
+              value: "5432"
+            - name: DB_NAME
+              value: userdb
+            - name: DB_USER
+              value: user
+            - name: DB_PASS
+              value: userpass
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-user
+spec:
+  selector:
+    app: api-user
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
+  type: ClusterIP  # or LoadBalancer if external access is needed

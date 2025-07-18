@@ -1,0 +1,63 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: init-db-movie
+data:
+  init.sql: |
+    CREATE TABLE movies (
+      id SERIAL PRIMARY KEY,
+      title TEXT NOT NULL
+    );
+
+    INSERT INTO movies (title) VALUES ('Inception'), ('The Matrix');
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: db-movie
+spec:
+  selector:
+    app: db-movie
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-movie
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db-movie
+  template:
+    metadata:
+      labels:
+        app: db-movie
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:15
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_USER
+              value: movie
+            - name: POSTGRES_PASSWORD
+              value: moviepass
+            - name: POSTGRES_DB
+              value: moviedb
+          volumeMounts:
+            - name: postgres-storage
+              mountPath: /var/lib/postgresql/data
+            - name: init-script
+              mountPath: /docker-entrypoint-initdb.d
+      volumes:
+        - name: postgres-storage
+          emptyDir: {}
+        - name: init-script
+          configMap:
+            name: init-db-movie

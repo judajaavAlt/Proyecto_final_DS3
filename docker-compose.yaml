@@ -33,7 +33,7 @@ services:
   # USER SERVICE (registro de usuarios)
   user-service:
     build:
-      context: ./Servicios/register-user-service
+      context: ./Servicios/user-service
       dockerfile: Dockerfile
     env_file:
       - .env
