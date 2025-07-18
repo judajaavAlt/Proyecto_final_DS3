@@ -1,28 +1,25 @@
-# Etapa de build
 FROM node:18-alpine AS builder
-
 WORKDIR /app
 
-# Copia dependencias
 COPY package.json package-lock.json ./
 RUN npm install --ignore-scripts
 
-# Copia el resto del proyecto (esto incluye angular.json, tsconfig.json, etc)
-COPY . .
+COPY public ./public
+COPY app ./app
+COPY services ./services
+COPY public/src/globals.css ./globals.css
+COPY public/google.svg ./public/google.svg
+COPY next.config.js ./
+COPY tsconfig.json ./
 
-# Compila la app en modo producción
-RUN npm run build -- --configuration=production
+RUN npm run build
 
-# Etapa de producción con Nginx
-FROM nginx:alpine
+FROM node:18-alpine AS runner
+WORKDIR /app
 
-# Copia archivos generados al servidor Nginx
-COPY --from=builder /app/dist/login/ /usr/share/nginx/html
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
+COPY --from=builder /app/public ./public
 
-# ---- FIX DE PERMISOS PARA NGINX ----
-RUN mkdir -p /var/cache/nginx && chown -R nginx:nginx /var/cache/nginx \
-    && mkdir -p /run && chown -R nginx:nginx /run
-
-USER nginx
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 3000
+CMD ["node", "server.js"]

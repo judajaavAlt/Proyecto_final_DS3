@@ -1,0 +1,148 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  padding: 20px;
+}
+
+.loginBox {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  background: rgba(27, 18, 21, 0.95); 
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  padding: 40px 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px); 
+  font-family: 'Inter', system-ui, -apple-system, sans-serif; 
+  font-weight: 500;
+  color: white; 
+  
+}
+
+.loginBox .title,
+.loginBox .subtitle,
+.loginBox .label,
+.loginBox .input,
+.loginBox .submitBtn,
+.loginBox .signupText {
+  font-family: inherit;
+  font-weight: inherit;
+}
+
+.closeButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #2c97eb; 
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.closeButton:hover {
+  color: #f74e4a; /* Azul más oscuro al hover */
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: white;
+  width: 100%;
+  padding-left: 40px;
+}
+
+.subtitle {
+  color: white;
+  margin-bottom: 24px;
+  font-size: 12px;
+  width: 100%;
+  padding-left: 40px;
+}
+
+.inputGroup {
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: white;
+  font-size: 14px;
+}
+
+.input {
+  width: 100%;
+  padding: 12px;
+  border: 3px solid #324dd3;
+  border-radius: 12px;
+  font-size: 14px;
+  background-color: rgba(27, 27, 27, .9);
+  color: white;
+  margin: 0 auto;
+}
+
+.submitBtn {
+  padding: 14px;
+  background-color: #324dd3;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 10px; /* Espaciado superior */
+  transition: background-color 0.2s;
+}
+
+.signupText {
+  text-align: center;
+  color: white;
+  font-size: 12px;
+}
+
+.signupLink {
+  color: #4285f4;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.error {
+  color: #e53e3e;
+  margin: 8px 0;
+  text-align: center;
+  font-size: 14px;
+}
+
+.success {
+  color: #38a169;
+  margin: 8px 0;
+  text-align: center;
+  font-size: 14px;
+}
+
+.formContainer {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto; 
+}
+
+.input,
+.submitBtn {
+  width: 100%;
+  box-sizing: border-box;
+}
