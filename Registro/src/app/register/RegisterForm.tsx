@@ -1,71 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import styles from "./RegisterModal.module.css";
-import { registerUser } from "@/services/userService"; // Ajusta la ruta según tu proyecto
+import { useRegisterForm } from "@/hook/UseRegisterUser"; // Ajusta el path según tu estructura
 import Image from "next/image";
 
-
 export default function RegisterModal() {
-  const [form, setForm] = useState({
-    username: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-    captcha: false,
-  });
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
-
-  // TIPADO para handleChange
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type, checked } = e.target;
-    setForm({
-      ...form,
-      [name]: type === "checkbox" ? checked : value,
-    });
-  };
-
-  // TIPADO para handleSubmit
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setError("");
-    setSuccess("");
-
-    if (!form.captcha) {
-      setError("Por favor verifica que no eres un robot.");
-      return;
-    }
-    if (form.password !== form.confirmPassword) {
-      setError("Las contraseñas no coinciden.");
-      return;
-    }
-    if (!form.username || !form.email || !form.password) {
-      setError("Por favor completa todos los campos.");
-      return;
-    }
-    try {
-      await registerUser({
-        username: form.username,
-        email: form.email,
-        password: form.password,
-      });
-      setSuccess("¡Usuario registrado exitosamente!");
-      setForm({
-        username: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-        captcha: false,
-      });
-    } catch (err: unknown) {
-      // TIPADO correcto para err
-      if (err instanceof Error) {
-        setError(err.message);
-      } else {
-        setError("No se pudo registrar el usuario.");
-      }
-    }
-  };
+  const { form, error, success ,handleChange, handleSubmit } = useRegisterForm();
 
   return (
     <div className={styles.overlay}>
@@ -144,16 +84,6 @@ export default function RegisterModal() {
             Crear cuenta
           </button>
         </form>
-        <div className={styles.googleBtn}>
-         <Image
-            src="/google.svg"
-            alt="Google"
-            className={styles.googleLogo}
-            width={32}   // Ajusta el tamaño según tu diseño
-            height={32}
-          />
-          <span>Sign up with Google</span>
-        </div>
         <p className={styles.signin}>
           ¿Ya tienes una cuenta? <a href="#">Inicia sesión aquí.</a>
         </p>

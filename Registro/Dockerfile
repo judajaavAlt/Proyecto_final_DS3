@@ -8,6 +8,8 @@ COPY public ./public
 COPY src ./src
 COPY next.config.ts ./
 COPY tsconfig.json ./
+COPY .env.local ./
+
 # ...otros archivos si tu build los necesita
 
 RUN npm run build
