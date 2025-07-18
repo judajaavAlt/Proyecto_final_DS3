@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './ReviewSection.css'; // Importamos los estilos
 
 
 // Información del usuario actual (en una app real, vendría de la autenticación)
 const currentUser = {
     name: 'Son Goku',
-    avatar: 'https://i.pinimg.com/736x/8a/a5/63/8aa56370a2b535b18413642c22268487.jpg'
+    avatar: 'https://imgur.com/gallery/photo-of-dog-panko-every-day-YMNlwi9#/t/dog'
 };
 
 // Componente para una estrella individual, usando entidades HTML
@@ -110,25 +111,32 @@ function ReviewSection() {
 
 
   const handleAddReview = ({ text, rating }) => {
-  const newReview = {
-    user: {
-      name: currentUser.name,
-      avatar: currentUser.avatar
-    },
-    comment: text,
-    rating,
-  };
+    const userId = localStorage.getItem('userId');
+    const newReview = {
+      comment: text,
+      rating,
+      movieId: 111,
+    };
 
-  fetch(`${API_URL}/reviews`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(newReview),
-  })
-    .then(res => res.json())
-    .then(createdReview => {
-      setReviews([createdReview, ...reviews]);
+    fetch(`${API_URL}/reviews`, {
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json',
+        'x-user-id': userId,
+      },
+      body: JSON.stringify(newReview),
     })
-    .catch(err => console.error('Error al enviar la reseña:', err));
+      .then(res => res.json())
+      .then(createdReview => {
+      const fullReview = {
+        ...createdReview,
+        author: currentUser.name,
+        avatar: currentUser.avatar,
+        date: new Date().toLocaleDateString(),
+  };
+  setReviews([fullReview, ...reviews]);
+})
+      .catch(err => console.error('Error al enviar la reseña:', err));
   };
 
 
@@ -151,5 +159,7 @@ function ReviewSection() {
     </div>
   );
 }
+
+
 
 export default ReviewSection;

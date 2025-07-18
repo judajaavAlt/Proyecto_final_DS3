@@ -28,17 +28,29 @@ app.get('/api/reviews', async (req, res) => {
 
 // POST
 app.post('/api/reviews', async (req, res) => {
-  const { user, comment, rating } = req.body;
-  const newReview = await prisma.review.create({
-    data: {
-      author: user.name,
-      avatar: user.avatar,
-      text: comment,
-      rating: Number(rating),
-    },
-  });
-  res.status(201).json(newReview);
+  const { userId, comment, rating } = req.body;
+
+  if (!userId) {
+    return res.status(401).json({ error: "Usuario no autenticado" });
+  }
+
+  try {
+    const newReview = await prisma.review.create({
+      data: {
+        text: comment,
+        rating: Number(rating),
+        userId: parseInt(userId),
+        movieId: 1
+      },
+    });
+
+    res.status(201).json(newReview);
+  } catch (error) {
+    console.error('Error al crear la reseña:', error);
+    res.status(500).json({ error: 'No se pudo crear la reseña' });
+  }
 });
+
 
 
 app.delete('/api/reviews/:id', async (req, res) => {
