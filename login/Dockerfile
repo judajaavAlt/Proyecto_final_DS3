@@ -12,6 +12,7 @@ COPY public/src/globals.css ./globals.css
 COPY public/google.svg ./public/google.svg
 COPY next.config.js ./
 COPY tsconfig.json ./
+COPY .env.local ./
 
 
 RUN npm run build

@@ -125,7 +125,7 @@ export default function LoginModal() {
         </form>
         
         <p className={styles.signupText}>
-          ¿No tienes una cuenta? <a href={process.env.FRONTEND_URL}>Regístrate aquí.</a>
+          ¿No tienes una cuenta? <a href={process.env.NEXT_PUBLIC_REGISTER_URL}>Regístrate aquí.</a>
         </p>
       </div>
     </div>
