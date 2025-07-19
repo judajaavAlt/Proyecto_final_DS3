@@ -133,7 +133,7 @@ export default function RegisterModal() {
           </button>
         </form>
         <p className={styles.signin}>
-          ¿Ya tienes una cuenta? <a href={process.env.NEXT_PUBLIC_LOGIN_URL}>Inicia sesión aquí</a>
+          ¿Ya tienes una cuenta? <a href="http://localhost:3000/login">Inicia sesión aquí</a>
         </p>
       </div>
     </div>

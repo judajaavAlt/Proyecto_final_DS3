@@ -1,6 +1,6 @@
 // lib/loginUser.ts
 export async function loginUser(data: { email_or_username: string; password: string }) {
-  const response = await fetch("/api/login", {
+  const response = await fetch("http://localhost:3000/api/saga/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)

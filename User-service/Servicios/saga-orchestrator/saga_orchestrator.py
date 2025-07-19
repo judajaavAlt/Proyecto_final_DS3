@@ -18,12 +18,16 @@ app.add_middleware(
 
 
 # URLs internas del docker-compose, ahora por variable de entorno
-USER_SERVICE_URL = os.environ["USER_SERVICE_URL"]
-EMAIL_SERVICE_URL = os.environ["EMAIL_SERVICE_URL"]
-DELETE_USER_URL = os.environ["DELETE_USER_URL"]
-VERIFY_USER_URL = os.environ["VERIFY_USER_URL"]
-WELCOME_EMAIL_URL = os.environ["WELCOME_EMAIL_URL"]
-LOGIN_SERVICE_URL = os.environ["LOGIN_SERVICE_URL"]
+REGISTER_SERVICE_URL = "http://register-user.default.svc.cluster.local/"
+LOGIN_SERVICE_URL = "http://login-user.default.svc.cluster.local/"
+EMAIL_SERVICE_URL = "http://email-user.default.svc.cluster.local/"
+
+USER_SERVICE_URL = REGISTER_SERVICE_URL+"/register/"
+EMAIL_SERVICE_URL = EMAIL_SERVICE_URL+"/send-confirmation/"
+DELETE_USER_URL = REGISTER_SERVICE_URL+"/users/"
+VERIFY_USER_URL = REGISTER_SERVICE_URL+"/confirmar/"
+WELCOME_EMAIL_URL = EMAIL_SERVICE_URL+"/send-welcome/"
+LOGIN_SERVICE_URL = LOGIN_SERVICE_URL+"/login/"
 
 # Modelo de usuario
 class User(BaseModel):
@@ -37,7 +41,7 @@ class LoginUser(BaseModel):
     password: str
 
 
-@app.post("/saga/register/")
+@app.post("/register/")
 async def saga_register(user: User):
     async with httpx.AsyncClient() as client:
         # Paso 1: Registrar usuario
@@ -66,7 +70,7 @@ async def saga_register(user: User):
 
         return {"message": "Usuario creado y email enviado correctamente."}
 
-@app.get("/saga/confirmar/")
+@app.get("/confirmar/")
 async def saga_confirmar(token: str):
     async with httpx.AsyncClient() as client:
         # Paso 1: Verificar usuario en user-service
@@ -88,7 +92,7 @@ async def saga_confirmar(token: str):
 
         return {"message": "Cuenta verificada y correo de bienvenida enviado correctamente."}
 
-@app.post("/saga/login/")
+@app.post("/login/")
 async def saga_login(user: LoginUser):
     async with httpx.AsyncClient() as client:
         r = await client.post(LOGIN_SERVICE_URL, json=user.dict())

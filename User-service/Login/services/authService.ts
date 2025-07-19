@@ -1,5 +1,5 @@
 export async function loginUser(data: { email: string; password: string; }) {
-  const response = await fetch('http://localhost:5000/login/', {
+  const response = await fetch('http://localhost:3000/api/saga/login', {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
