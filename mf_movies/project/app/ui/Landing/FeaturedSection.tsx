@@ -8,12 +8,12 @@ export function FeaturedSection({
   icon: Icon,
   movies,
   type,
-}: {
+}: Readonly<{
   title: string;
   icon: any;
   movies: Movie[];
   type: "recent" | "upcoming";
-}) {
+}>) {
   return (
     <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-8 rounded-xl shadow-xl">
       <div className="flex items-center gap-3 mb-6">
@@ -48,9 +48,16 @@ export function FeaturedSection({
                     <Calendar1 className="w-4 h-4" />
                     <span>Hace 3 días</span>
                   </div>
-                  <p className="text-gray-400 text-sm line-clamp-2">
-                    {movie.synopsis}
-                  </p>
+                  <div className="flex gap-2">
+                    {movie.genres?.slice(0, 2).map((genre, index) => (
+                      <span
+                        key={`${movie.id}-${genre}`}
+                        className="px-2 py-1 bg-gray-800 rounded-full text-xs font-medium text-gray-300"
+                      >
+                        {genre}
+                      </span>
+                    ))}
+                  </div>
                 </>
               ) : (
                 <>
@@ -61,7 +68,7 @@ export function FeaturedSection({
                   <div className="flex gap-2">
                     {movie.genres?.slice(0, 2).map((genre, index) => (
                       <span
-                        key={index}
+                        key={`${movie.id}-${genre}`}
                         className="px-2 py-1 bg-gray-800 rounded-full text-xs font-medium text-gray-300"
                       >
                         {genre}

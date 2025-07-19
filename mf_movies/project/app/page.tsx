@@ -106,10 +106,14 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-[#0F172A]">
       <HeroCarousel moviesH={heroMovies} />
 
-      <section id="movie-list" className="container mx-auto px-4 py-16">
+      <section className="container mx-auto px-4 ">
+        <FeatureMovies movies={featuredMovies.slice(0, 10)}></FeatureMovies>
+      </section>
+
+      <section id="movie-list" className="container mx-auto px-4 ">
         <Filters
           selectedGenre={selectedGenre}
           setSelectedGenre={setSelectedGenre}
@@ -124,24 +128,32 @@ export default function Home() {
         />
 
         <section className="mt-12">
-          {filteredMovies.length === 0 ? (
-            <h2 className="text-2xl text-center ">
-              <PackageOpen className="mx-auto h-24 w-24 text-gray-400 " />
-              No se encontraron películas
-            </h2>
-          ) : viewMode === "grid" ? (
-            <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {paginatedMovies.map((movie) => (
-                <MovieGridCard key={movie.id} movie={movie} />
-              ))}
-            </section>
-          ) : (
-            <section className="space-y-6">
-              {paginatedMovies.map((movie) => (
-                <MovieListItem key={movie.id} movie={movie} />
-              ))}
-            </section>
-          )}
+          {(() => {
+            if (filteredMovies.length === 0) {
+              return (
+                <h2 className="text-2xl text-center ">
+                  <PackageOpen className="mx-auto h-24 w-24 text-gray-400 " />
+                  No se encontraron películas
+                </h2>
+              );
+            }
+            if (viewMode === "grid") {
+              return (
+                <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {paginatedMovies.map((movie) => (
+                    <MovieGridCard key={movie.id} movie={movie} />
+                  ))}
+                </section>
+              );
+            }
+            return (
+              <section className="space-y-6">
+                {paginatedMovies.map((movie) => (
+                  <MovieListItem key={movie.id} movie={movie} />
+                ))}
+              </section>
+            );
+          })()}
         </section>
 
         {totalPages > 1 && (
@@ -151,10 +163,6 @@ export default function Home() {
             setCurrentPage={setCurrentPage}
           />
         )}
-      </section>
-
-      <section className="container mx-auto px-4 py-16">
-        <FeatureMovies movies={featuredMovies.slice(0, 10)}></FeatureMovies>
       </section>
 
       <section className="py-16">

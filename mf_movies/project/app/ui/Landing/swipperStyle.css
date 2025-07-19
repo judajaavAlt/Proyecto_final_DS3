@@ -1,6 +1,6 @@
 .swiper-button-prev,
 .swiper-button-next {
-  color: #fbbf24 !important; /* Color amarillo */
+  color: var(--red-light) !important; /* Color amarillo */
   padding: 0 20px;
 }
 
@@ -10,6 +10,6 @@
 }
 
 .swiper-pagination-bullet-active {
-  background: #fbbf24 !important;
+  background: var(--red-light) !important;
   opacity: 1 !important;
 }
