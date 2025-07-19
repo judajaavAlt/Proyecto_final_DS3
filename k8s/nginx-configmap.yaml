@@ -6,6 +6,8 @@ data:
   nginx.conf: |
     events {}
     http {
+        resolver kube-dns.kube-system.svc.cluster.local;
+
         server {
             listen 80;
 

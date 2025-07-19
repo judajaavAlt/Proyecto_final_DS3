@@ -4,12 +4,16 @@ metadata:
   name: init-db-user
 data:
   init.sql: |
-    CREATE TABLE users (
-      id SERIAL PRIMARY KEY,
-      name TEXT NOT NULL
-    );
+    CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
-    INSERT INTO users (name) VALUES ('Alice'), ('Bob');
+    CREATE TABLE users (
+        id SERIAL PRIMARY KEY,
+        username VARCHAR(50) NOT NULL,
+        email VARCHAR(100) UNIQUE NOT NULL,
+        password TEXT NOT NULL,
+        is_verified BOOLEAN DEFAULT FALSE,
+        verification_token TEXT
+    );
 ---
 apiVersion: v1
 kind: Service
