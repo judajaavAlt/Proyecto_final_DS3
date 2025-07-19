@@ -4,8 +4,8 @@ import { useState } from "react";
 import { LayoutGrid, List, Search, ChevronDown, ArrowUpAZ } from "lucide-react";
 
 type FiltersProps = {
-  selectedGenre: string;
-  setSelectedGenre: (genre: string) => void;
+  selectedGenre: string[];
+  setSelectedGenre: (genre: string[]) => void;
   selectedYear: string;
   setSelectedYear: (year: string) => void;
   searchQuery: string;
@@ -119,11 +119,17 @@ export function Filters({
         {/* Genre pills */}
         <div className="flex items-center justify-center gap-3  ">
           {genres.map((genre) => {
-            const isSelected = selectedGenre === genre;
+            const isSelected = selectedGenre.includes(genre);
             return (
               <button
                 key={genre}
-                onClick={() => setSelectedGenre(isSelected ? "" : genre)}
+                onClick={() =>
+                  setSelectedGenre(
+                    isSelected
+                      ? selectedGenre.filter((g) => g !== genre)
+                      : [...selectedGenre, genre]
+                  )
+                }
                 className={`px-8 py-3 rounded-full text-md font-medium transition-colors duration-200   ${
                   isSelected
                     ? "bg-red-600 text-white"

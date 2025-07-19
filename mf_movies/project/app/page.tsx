@@ -33,7 +33,7 @@ import { getAllMovies } from "./lib/moviePort";
 
 export default function Home() {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
-  const [selectedGenre, setSelectedGenre] = useState("All");
+  const [selectedGenre, setSelectedGenre] = useState<string[]>(["All"]);
   const [selectedYear, setSelectedYear] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -94,7 +94,7 @@ export default function Home() {
       movie.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       movie.synopsis.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesGenre =
-      selectedGenre === "All" || movie.genres.includes(selectedGenre);
+      selectedGenre.length === 1 && selectedGenre[0] === "All" ? true : false;
     const matchesYear =
       selectedYear === "All" ||
       (selectedYear === "<" && movie.releaseYear < 2020) ||
