@@ -1,16 +1,18 @@
 "use client";
 import React, { useState } from "react";
 import styles from "./LoginModal.module.css";
-import { loginUser } from "../../services/authService";
+import { loginUser } from "../../lib/loginUser";
 
 export default function LoginModal() {
   const [form, setForm] = useState({
-    email: "",
+    email_or_username: "",
     password: "",
   });
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [isVisible, setIsVisible] = useState(true);
+
+   const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -25,19 +27,19 @@ export default function LoginModal() {
     setError("");
     setSuccess("");
 
-    if (!form.email || !form.password) {
+    if (!form.email_or_username || !form.password) {
       setError("Por favor completa todos los campos.");
       return;
     }
     
     try {
       await loginUser({
-        email: form.email,
+        email_or_username: form.email_or_username,
         password: form.password,
       });
       setSuccess("¡Inicio de sesión exitoso!");
       setForm({
-        email: "",
+        email_or_username: "",
         password: "",
       });
     } catch (err: unknown) {
@@ -74,24 +76,44 @@ export default function LoginModal() {
             <label className={styles.label}>Usuario o Correo electrónico</label>
             <input
               className={styles.input}
-              type="email"
-              name="email"
+              type="text"
+              name="email_or_username"
               required
-              value={form.email}
+              value={form.email_or_username}
               onChange={handleChange}
             />
           </div>
           
-          <div className={styles.inputGroup}>
+          <div className={styles.inputGroup}  style={{ position: "relative" }}>
             <label className={styles.label}>Contraseña</label>
             <input
               className={styles.input}
-              type="password"
+              type= {showPassword ? "text" :"password"}
               name="password"
               required
               value={form.password}
               onChange={handleChange}
             />
+             <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                style={{
+                  position: "absolute",
+                  right: "12px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  color: "#324dd3",
+                  fontWeight: "bold",
+                  userSelect: "none",
+                  padding: 0,
+                }}
+                aria-label={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
+              >
+                {showPassword ? "🙈" : "👁️"}
+              </button>
           </div>
           
           {error && <div className={styles.error}>{error}</div>}
@@ -103,7 +125,7 @@ export default function LoginModal() {
         </form>
         
         <p className={styles.signupText}>
-          ¿No tienes una cuenta? <a href="http://localhost:3000">Regístrate aquí.</a>
+          ¿No tienes una cuenta? <a href={process.env.NEXT_PUBLIC_REGISTER_URL}>Regístrate aquí.</a>
         </p>
       </div>
     </div>

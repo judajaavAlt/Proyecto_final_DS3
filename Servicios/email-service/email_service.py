@@ -25,7 +25,7 @@ async def send_confirmation(req: EmailRequest):
         msg['From'] = os.getenv("EMAIL_FROM") or "no-reply@miapp.com"
         msg['To'] = req.email
 
-        frontend_url = os.getenv("FRONTEND_URL", "http://localhost:3000")
+        frontend_url = os.getenv("FRONTEND_URL")
         link = f"{frontend_url}/confirmar?token={req.token}"
 
           # Leer HTML desde archivo y reemplazar {{ link }}

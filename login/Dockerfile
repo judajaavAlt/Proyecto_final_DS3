@@ -6,11 +6,14 @@ RUN npm install --ignore-scripts
 
 COPY public ./public
 COPY app ./app
-COPY services ./services
+COPY lib ./lib
+COPY pages ./pages
 COPY public/src/globals.css ./globals.css
 COPY public/google.svg ./public/google.svg
 COPY next.config.js ./
 COPY tsconfig.json ./
+COPY .env.local ./
+
 
 RUN npm run build
 
@@ -20,6 +23,10 @@ WORKDIR /app
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/public ./public
+# Define la variable de entorno PORT, que se usará en EXPOSE y por Next.js
+ARG PORT=4200
+ENV PORT=$PORT
 
-EXPOSE 3000
+EXPOSE $PORTt
+
 CMD ["node", "server.js"]
