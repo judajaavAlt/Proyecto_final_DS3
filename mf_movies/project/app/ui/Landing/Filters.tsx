@@ -14,6 +14,8 @@ type FiltersProps = {
   setViewMode: (mode: "grid" | "list") => void;
   genres: string[];
   years: number[];
+  selectedSort: string;
+  setSelectedSort: (sort: string) => void;
 };
 
 export function Filters({
@@ -25,12 +27,11 @@ export function Filters({
   setSearchQuery,
   viewMode,
   setViewMode,
+  selectedSort,
+  setSelectedSort,
   genres,
   years,
 }: Readonly<FiltersProps>) {
-  const sorts = ["A-Z", "Z-A", "Rating", "Year"];
-  const [selectedSort, setSelectedSort] = useState(sorts[0]);
-
   return (
     <div className="flex flex-col gap-3">
       <div>
@@ -81,33 +82,49 @@ export function Filters({
 
             {/* Year Dropdown */}
             <div className="relative">
-              <button className="flex items-center bg-gray-800 text-white rounded-lg px-4 py-2 border border-gray-700 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200">
-                <span className="mr-2 text-sm">Year</span>
-                <ChevronDown className="w-4 h-4 text-gray-400" />
-              </button>
-              {/* TODO: Replace with actual select or dropdown menu */}
+              <select
+                value={selectedYear}
+                onChange={(e) => setSelectedYear(e.target.value)}
+                className="  flex items-center    bg-gray-800 text-white rounded-lg px-4 py-2 border border-gray-700 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200 z-10"
+                style={{ minWidth: "8rem" }}
+              >
+                <option value="All">All Years</option>
+                <option value="<">Before 2020</option>
+                {years.map((year) => (
+                  <option key={year} value={year.toString()}>
+                    {year}
+                  </option>
+                ))}
+              </select>
             </div>
 
             {/* Sort Dropdown */}
             <div className="relative">
-              <button className="flex items-center bg-gray-800 text-white rounded-lg px-4 py-2 border border-gray-700 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200">
-                <span className="mr-2 text-sm">{selectedSort}</span>
-                <ArrowUpAZ className="w-4 h-4 text-gray-400" />
-              </button>
-              {/* TODO: Replace with actual select or dropdown menu */}
+              <select
+                value={selectedSort}
+                onChange={(e) => setSelectedSort(e.target.value)}
+                className="flex items-center bg-gray-800 text-white rounded-lg px-4 py-2 border border-gray-700 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200"
+              >
+                <option value="A-Z">A-Z</option>
+                <option value="Z-A">Z-A</option>
+                <option value="YearDesc">Year (Newest)</option>
+                <option value="YearAsc">Year (Oldest)</option>
+                <option value="RatingDesc">Rating (High to Low)</option>
+                <option value="RatingAsc">Rating (Low to High)</option>
+              </select>
             </div>
           </div>
         </div>
 
         {/* Genre pills */}
-        <div className="flex flex-wrap gap-3">
+        <div className="flex items-center justify-center gap-3  ">
           {genres.map((genre) => {
             const isSelected = selectedGenre === genre;
             return (
               <button
                 key={genre}
-                onClick={() => setSelectedGenre(isSelected ? null : genre)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
+                onClick={() => setSelectedGenre(isSelected ? "" : genre)}
+                className={`px-8 py-3 rounded-full text-md font-medium transition-colors duration-200   ${
                   isSelected
                     ? "bg-red-600 text-white"
                     : "bg-gray-800 text-gray-400 hover:text-white"

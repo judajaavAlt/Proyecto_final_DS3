@@ -1,0 +1,72 @@
+.borderG {
+  position: absolute;
+  background: var(--gold);
+  transition: all 0.5s ease;
+}
+
+/* Borde superior/inferior inicial muy corto */
+.borderG.top,
+.borderG.bottom {
+  height: 5px;
+  width: 15;
+}
+
+/* Borde izquierdo/derecho inicial muy corto */
+.borderG.left,
+.borderG.right {
+  width: 5;
+  height: 15;
+}
+
+/* Posicionamiento inicial de cada uno */
+.borderG.top {
+  top: 8%;
+  left: 8%;
+}
+.borderG.right {
+  top: 8%;
+  right: 8%;
+}
+.borderG.bottom {
+  bottom: 8%;
+  right: 8%;
+}
+.borderG.left {
+  bottom: 8%;
+  left: 8%;
+}
+
+/* Contenido central */
+.contentG {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 1rem 1.5rem;
+  background: var(--gold);
+  color: var(--gold);
+  transform: translate(-50%, -50%) scale(1);
+  text-align: center;
+  transition: all 0.5s ease;
+  border-radius: 4px;
+  opacity: 0;
+}
+
+/* Estado hover: animamos bordes y contenido */
+.card:hover .borderG.top,
+.card:hover .borderG.bottom {
+  width: 84%;
+  background: var(--red-light);
+}
+
+.card:hover .borderG.left,
+.card:hover .borderG.right {
+  height: 84%;
+  background: var(--red-light);
+}
+
+.card:hover .contentG {
+  transform: translate(-50%, -50%) scale(1.05);
+  background: var(--red-light);
+  color: var(--text-base);
+  opacity: 1;
+}

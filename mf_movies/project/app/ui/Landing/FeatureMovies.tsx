@@ -3,6 +3,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { Star } from "lucide-react";
 
+import "./FeatureMovies.css";
+
 // Importa los estilos de Swiper
 import "./swipperStyle.css";
 import "swiper/css";
@@ -15,7 +17,7 @@ export default function FeatureMovies({
   readonly movies: readonly Movie[];
 }) {
   return (
-    <section className="container mx-auto px-4 py-12">
+    <>
       <link
         href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;700;900&display=swap"
         rel="stylesheet"
@@ -31,7 +33,7 @@ export default function FeatureMovies({
         slidesPerView={2}
         navigation
         pagination={{ clickable: true }}
-        autoplay={{ delay: 5000 }}
+        autoplay={{ delay: 50000 }}
         breakpoints={{
           640: {
             slidesPerView: 3,
@@ -47,7 +49,8 @@ export default function FeatureMovies({
       >
         {movies.map((movie, index) => (
           <SwiperSlide key={movie.id}>
-            <div className="group relative h-[400px] rounded-xl shadow-xl transition-transform duration-300 hover:z-10 hover:scale-105 ">
+            <div className="card group relative h-[400px] rounded-xl shadow-xl transition-transform duration-300 hover:z-10 hover:scale-105 ">
+              {/* Poster */}
               <img
                 className="h-full w-full object-cover rounded-xl"
                 src={movie.posterUrl}
@@ -70,8 +73,17 @@ export default function FeatureMovies({
                 </span>
               </div>
 
+              {/* Effect Superposicion */}
               <div className="absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
+              {/* Borders */}
+              <span className="borderG top"></span>
+              <span className="borderG right"></span>
+              <span className="borderG bottom"></span>
+              <span className="borderG left"></span>
+              <div className="contentG">Ver Sitio</div>
+
+              {/* Rating */}
               <div className="absolute opacity-0 top-3 right-2 transition-opacity duration-300 group-hover:opacity-100">
                 <div className="flex items-center justify-center h-full">
                   <Star className="w-6 h-6 text-yellow-400 inline-block mr-2" />
@@ -84,7 +96,6 @@ export default function FeatureMovies({
           </SwiperSlide>
         ))}
       </Swiper>
-    </section>
+    </>
   );
 }
-

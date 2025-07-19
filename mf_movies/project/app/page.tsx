@@ -37,6 +37,7 @@ export default function Home() {
   const [selectedYear, setSelectedYear] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedSort, setSelectedSort] = useState("A-Z");
 
   const [allMovies, setAllMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState(true);
@@ -64,8 +65,31 @@ export default function Home() {
 
   const moviesPerPage = 9;
 
+  // Sort movies based on selected sort
+  const sortedMovies = allMovies.slice().sort((a, b) => {
+    if (selectedSort === "A-Z") {
+      return a.title.localeCompare(b.title);
+    }
+    if (selectedSort === "Z-A") {
+      return b.title.localeCompare(a.title);
+    }
+    if (selectedSort === "YearDesc") {
+      return b.releaseYear - a.releaseYear;
+    }
+    if (selectedSort === "YearAsc") {
+      return a.releaseYear - b.releaseYear;
+    }
+    if (selectedSort === "RatingDesc") {
+      return b.rating - a.rating;
+    }
+    if (selectedSort === "RatingAsc") {
+      return a.rating - b.rating;
+    }
+    return 0; // Fix: Always return a number
+  });
+
   // Filter movies based on search and filters
-  const filteredMovies = allMovies.filter((movie) => {
+  const filteredMovies = sortedMovies.filter((movie) => {
     const matchesSearch =
       movie.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       movie.synopsis.toLowerCase().includes(searchQuery.toLowerCase());
@@ -106,14 +130,14 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0F172A]">
+    <div className="bg-[#0F172A]">
       <HeroCarousel moviesH={heroMovies} />
 
-      <section className="container mx-auto px-4 ">
-        <FeatureMovies movies={featuredMovies.slice(0, 10)}></FeatureMovies>
+      <section className="container mx-auto">
+        <FeatureMovies movies={featuredMovies.slice(0, 10)} />
       </section>
 
-      <section id="movie-list" className="container mx-auto px-4 ">
+      <section id="movie-list" className="container mx-auto ">
         <Filters
           selectedGenre={selectedGenre}
           setSelectedGenre={setSelectedGenre}
@@ -123,6 +147,8 @@ export default function Home() {
           setSearchQuery={setSearchQuery}
           viewMode={viewMode}
           setViewMode={setViewMode}
+          selectedSort={selectedSort}
+          setSelectedSort={setSelectedSort}
           genres={genres}
           years={years}
         />
@@ -165,28 +191,26 @@ export default function Home() {
         )}
       </section>
 
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h4 className="text-red-500 font-medium mb-2">Lo Más Destacado</h4>
-            <h2 className="text-4xl font-bold">Esta Semana en el Cine</h2>
-          </div>
+      <section className="container mx-auto">
+        <div className="text-center mb-12">
+          <h4 className="text-red-500 font-medium mb-2">Lo Más Destacado</h4>
+          <h2 className="text-4xl font-bold">Esta Semana en el Cine</h2>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <FeaturedSection
-              title="Estrenos Recientes"
-              icon={Flame}
-              movies={recentMovies}
-              type="recent"
-            />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <FeaturedSection
+            title="Estrenos Recientes"
+            icon={Flame}
+            movies={recentMovies}
+            type="recent"
+          />
 
-            <FeaturedSection
-              title="Próximos Estrenos"
-              icon={Calendar}
-              movies={nextsMovies}
-              type="upcoming"
-            />
-          </div>
+          <FeaturedSection
+            title="Próximos Estrenos"
+            icon={Calendar}
+            movies={nextsMovies}
+            type="upcoming"
+          />
         </div>
       </section>
     </div>
