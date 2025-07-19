@@ -91,15 +91,12 @@ export function HeroCarousel({
                 </h1>
 
                 <div className="flex items-center gap-4">
-                  <AccorntG
-                    url="https://www.youtube.com/watch?v=RlbR5N6veqw"
-                    text="Ver Tráiler"
-                  >
-                    <Popcorn className="inline" />
-                  </AccorntG>
-
                   <AccorntG url={`/m/${movie.title}`} text="Ver Reseñas">
                     <TvMinimalPlay className="inline" />
+                  </AccorntG>
+
+                  <AccorntG url={movie.trailerUrl} text="Ver Tráiler">
+                    <Popcorn className="inline" />
                   </AccorntG>
                 </div>
 
@@ -116,18 +113,18 @@ export function HeroCarousel({
 
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 p-3 rounded-full hover:bg-black/75 transition-all duration-300"
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/0 p-3 rounded-full hover:bg-black/75 transition-all duration-500"
         aria-label="Anterior"
       >
-        <ChevronLeft size={28} />
+        <ChevronLeft className="w-10 h-10 hover:text-[--red-light] transition-all duration-300" />
       </button>
 
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 p-3 rounded-full hover:bg-black/75 transition-all duration-300"
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/0 p-3 rounded-full hover:bg-black/75 transition-all duration-500"
         aria-label="Siguiente"
       >
-        <ChevronRight size={28} />
+        <ChevronRight className="w-10 h-10 hover:text-[--red-light] transition-all duration-300" />
       </button>
 
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">

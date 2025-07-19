@@ -14,6 +14,7 @@ export const featuredMovies2 = [
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
     heroposter:
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 2,
@@ -30,6 +31,7 @@ export const featuredMovies2 = [
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
     heroposter:
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 3,
@@ -46,6 +48,7 @@ export const featuredMovies2 = [
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
     heroposter:
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 4,
@@ -62,6 +65,7 @@ export const featuredMovies2 = [
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
     heroposter:
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 5,
@@ -78,6 +82,7 @@ export const featuredMovies2 = [
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
     heroposter:
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 6,
@@ -95,6 +100,7 @@ export const featuredMovies2 = [
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
     heroposter:
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 7,
@@ -111,6 +117,7 @@ export const featuredMovies2 = [
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
     heroposter:
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 8,
@@ -128,6 +135,7 @@ export const featuredMovies2 = [
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
     heroposter:
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 9,
@@ -145,6 +153,7 @@ export const featuredMovies2 = [
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
     heroposter:
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 10,
@@ -162,6 +171,7 @@ export const featuredMovies2 = [
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
     heroposter:
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 11,
@@ -179,6 +189,7 @@ export const featuredMovies2 = [
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
     heroposter:
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 12,
@@ -196,6 +207,7 @@ export const featuredMovies2 = [
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
     heroposter:
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 13,
@@ -213,6 +225,7 @@ export const featuredMovies2 = [
       "https://th.bing.com/th/id/OIP.bacb4gLuvXQpcAFpO7Q9hgHaLH?rs=1&pid=ImgDetMain",
     heroposter:
       "https://th.bing.com/th/id/OIP.bacb4gLuvXQpcAFpO7Q9hgHaLH?rs=1&pid=ImgDetMain",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 14,
@@ -230,6 +243,7 @@ export const featuredMovies2 = [
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
     heroposter:
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 15,
@@ -247,6 +261,7 @@ export const featuredMovies2 = [
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
     heroposter:
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 16,
@@ -264,6 +279,7 @@ export const featuredMovies2 = [
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
     heroposter:
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 17,
@@ -281,6 +297,7 @@ export const featuredMovies2 = [
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
     heroposter:
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 18,
@@ -298,6 +315,7 @@ export const featuredMovies2 = [
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
     heroposter:
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 19,
@@ -315,6 +333,7 @@ export const featuredMovies2 = [
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
     heroposter:
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 20,
@@ -332,6 +351,7 @@ export const featuredMovies2 = [
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
     heroposter:
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 21,
@@ -349,6 +369,7 @@ export const featuredMovies2 = [
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
     heroposter:
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 22,
@@ -366,6 +387,7 @@ export const featuredMovies2 = [
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
     heroposter:
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 23,
@@ -383,6 +405,7 @@ export const featuredMovies2 = [
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
     heroposter:
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 24,
@@ -400,6 +423,7 @@ export const featuredMovies2 = [
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
     heroposter:
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 25,
@@ -417,6 +441,7 @@ export const featuredMovies2 = [
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
     heroposter:
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 26,
@@ -434,6 +459,7 @@ export const featuredMovies2 = [
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
     heroposter:
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 27,
@@ -451,6 +477,7 @@ export const featuredMovies2 = [
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
     heroposter:
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 28,
@@ -468,6 +495,7 @@ export const featuredMovies2 = [
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
     heroposter:
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 29,
@@ -485,6 +513,7 @@ export const featuredMovies2 = [
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
     heroposter:
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 30,
@@ -502,6 +531,7 @@ export const featuredMovies2 = [
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
     heroposter:
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 31,
@@ -519,6 +549,7 @@ export const featuredMovies2 = [
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
     heroposter:
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 32,
@@ -536,6 +567,7 @@ export const featuredMovies2 = [
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
     heroposter:
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 33,
@@ -553,6 +585,7 @@ export const featuredMovies2 = [
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
     heroposter:
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
 ];
 
@@ -572,6 +605,7 @@ export const featuredMovies = [
       "https://i.pinimg.com/originals/76/71/5e/76715ecff73dbd26359a6216966eede4.jpg",
     heroposter:
       "https://images.bauerhosting.com/empire/2023/07/poor-things.jpg?ar=16:9&fit=crop&crop=top&auto=format&w=1440&q=80",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 2,
@@ -587,6 +621,7 @@ export const featuredMovies = [
     posterUrl: "https://m.media-amazon.com/images/I/71WAylLeCLL.jpg",
     heroposter:
       "https://th.bing.com/th/id/OIP.c0q6NJYlJ3xK9UAj72yMFAHaLH?rs=1&pid=ImgDetMain",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 3,
@@ -603,6 +638,7 @@ export const featuredMovies = [
       "https://th.bing.com/th/id/OIP.wDsSqp7qBcMwER6j8xN-ywHaLA?rs=1&pid=ImgDetMain",
     heroposter:
       "https://th.bing.com/th/id/OIP.wDsSqp7qBcMwER6j8xN-ywHaLA?rs=1&pid=ImgDetMain",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 4,
@@ -619,6 +655,7 @@ export const featuredMovies = [
       "https://fr.web.img3.acsta.net/pictures/15/04/14/18/30/215297.jpg",
     heroposter:
       "https://fr.web.img3.acsta.net/pictures/15/04/14/18/30/215297.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 5,
@@ -635,6 +672,7 @@ export const featuredMovies = [
       "https://th.bing.com/th/id/OIP.DwUf_IPcQc0ANst2Jnhn4QHaKl?w=131&h=187&c=7&r=0&o=5&pid=1.7",
     heroposter:
       "https://th.bing.com/th/id/OIP.DwUf_IPcQc0ANst2Jnhn4QHaKl?w=131&h=187&c=7&r=0&o=5&pid=1.7",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 6,
@@ -652,6 +690,7 @@ export const featuredMovies = [
       "https://th.bing.com/th/id/R.548566e8cf45dc11b59d13c12d5dbec0?rik=aeeJkyabBBcO%2fQ&riu=http%3a%2f%2fwww.cartelesmix.com%2fcarteles%2festrenos2009%2fmivecinototoro8803.jpg&ehk=5ZPAAdyJ%2bdhHskc94c2nB596NcISHCCWPnAWMuJZyb4%3d&risl=&pid=ImgRaw&r=0",
     heroposter:
       "https://th.bing.com/th/id/R.548566e8cf45dc11b59d13c12d5dbec0?rik=aeeJkyabBBcO%2fQ&riu=http%3a%2f%2fwww.cartelesmix.com%2fcarteles%2festrenos2009%2fmivecinototoro8803.jpg&ehk=5ZPAAdyJ%2bdhHskc94c2nB596NcISHCCWPnAWMuJZyb4%3d&risl=&pid=ImgRaw&r=0",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 7,
@@ -668,6 +707,7 @@ export const featuredMovies = [
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
     heroposter:
       "https://i.pinimg.com/originals/c5/5b/12/c55b124ddca12ac0165f57c90a09acba.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 8,
@@ -685,6 +725,7 @@ export const featuredMovies = [
       "https://th.bing.com/th/id/R.3fb65148f9520a8aa183096570328e76?rik=gn42A1VyPhVl2w&pid=ImgRaw&r=0",
     heroposter:
       "https://th.bing.com/th/id/R.3fb65148f9520a8aa183096570328e76?rik=gn42A1VyPhVl2w&pid=ImgRaw&r=0",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 9,
@@ -702,6 +743,7 @@ export const featuredMovies = [
       "https://th.bing.com/th/id/OIP.3n3N603r2lC2wsy5uvt6MAHaLH?rs=1&pid=ImgDetMain",
     heroposter:
       "https://th.bing.com/th/id/OIP.3n3N603r2lC2wsy5uvt6MAHaLH?rs=1&pid=ImgDetMain",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 10,
@@ -719,6 +761,7 @@ export const featuredMovies = [
       "https://th.bing.com/th/id/R.51305ff156a3373d563c1093e4bdf0c8?rik=UlaRqwgY2TgNvg&pid=ImgRaw&r=0",
     heroposter:
       "https://th.bing.com/th/id/R.51305ff156a3373d563c1093e4bdf0c8?rik=UlaRqwgY2TgNvg&pid=ImgRaw&r=0",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 11,
@@ -736,6 +779,7 @@ export const featuredMovies = [
       "https://th.bing.com/th/id/R.7bd7a9b697a89f374c8b4da1095ca139?rik=0wYLX8FXf34Mng&pid=ImgRaw&r=0",
     heroposter:
       "https://th.bing.com/th/id/R.7bd7a9b697a89f374c8b4da1095ca139?rik=0wYLX8FXf34Mng&pid=ImgRaw&r=0",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 12,
@@ -753,6 +797,7 @@ export const featuredMovies = [
       "https://image.tmdb.org/t/p/original/1t0FcqSsBs51PDhDkFd7EiEytU6.jpg",
     heroposter:
       "https://image.tmdb.org/t/p/original/1t0FcqSsBs51PDhDkFd7EiEytU6.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 13,
@@ -770,6 +815,7 @@ export const featuredMovies = [
       "https://th.bing.com/th/id/OIP.bacb4gLuvXQpcAFpO7Q9hgHaLH?rs=1&pid=ImgDetMain",
     heroposter:
       "https://th.bing.com/th/id/OIP.bacb4gLuvXQpcAFpO7Q9hgHaLH?rs=1&pid=ImgDetMain",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 14,
@@ -787,6 +833,7 @@ export const featuredMovies = [
       "https://th.bing.com/th/id/R.95fed080dda57bf7e09e9ea1131b03b4?rik=i7bdIm90bRB%2fPQ&pid=ImgRaw&r=0",
     heroposter:
       "https://th.bing.com/th/id/R.95fed080dda57bf7e09e9ea1131b03b4?rik=i7bdIm90bRB%2fPQ&pid=ImgRaw&r=0",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 15,
@@ -804,6 +851,7 @@ export const featuredMovies = [
       "https://th.bing.com/th/id/OIP.8H2ulsU_4NeqD4wci3j0YgHaLf?rs=1&pid=ImgDetMain",
     heroposter:
       "https://th.bing.com/th/id/OIP.8H2ulsU_4NeqD4wci3j0YgHaLf?rs=1&pid=ImgDetMain",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 16,
@@ -821,6 +869,7 @@ export const featuredMovies = [
       "https://th.bing.com/th/id/R.70a2f9351cdd6a0fc91ed5dffc14ef49?rik=Vc%2fgIvcAxwrIqA&pid=ImgRaw&r=0",
     heroposter:
       "https://th.bing.com/th/id/R.70a2f9351cdd6a0fc91ed5dffc14ef49?rik=Vc%2fgIvcAxwrIqA&pid=ImgRaw&r=0",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 17,
@@ -838,6 +887,7 @@ export const featuredMovies = [
       "https://www.themoviedb.org/t/p/original/tnPGFoeQpLznLplytqPjmvRIJ2F.jpg",
     heroposter:
       "https://www.themoviedb.org/t/p/original/tnPGFoeQpLznLplytqPjmvRIJ2F.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 18,
@@ -855,6 +905,7 @@ export const featuredMovies = [
       "https://th.bing.com/th/id/OIP.0KZ917k5v8OgYflOwX_vhQHaEL?rs=1&pid=ImgDetMain",
     heroposter:
       "https://th.bing.com/th/id/OIP.0KZ917k5v8OgYflOwX_vhQHaEL?rs=1&pid=ImgDetMain",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 19,
@@ -872,6 +923,7 @@ export const featuredMovies = [
       "https://image.tmdb.org/t/p/original/vlsi5iZcfDChKNGNvRp7Zp3SULH.jpg",
     heroposter:
       "https://image.tmdb.org/t/p/original/vlsi5iZcfDChKNGNvRp7Zp3SULH.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 20,
@@ -889,6 +941,7 @@ export const featuredMovies = [
       "https://images-na.ssl-images-amazon.com/images/I/816QLZKwmIL.jpg",
     heroposter:
       "https://images-na.ssl-images-amazon.com/images/I/816QLZKwmIL.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 21,
@@ -906,6 +959,7 @@ export const featuredMovies = [
       "https://th.bing.com/th/id/OIP.51jQD4ilf8uWPR6xFlGb7wHaLH?w=186&h=279&c=7&r=0&o=5&pid=1.7",
     heroposter:
       "https://th.bing.com/th/id/OIP.51jQD4ilf8uWPR6xFlGb7wHaLH?w=186&h=279&c=7&r=0&o=5&pid=1.7",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 22,
@@ -923,6 +977,7 @@ export const featuredMovies = [
       "https://www.themoviedb.org/t/p/original/5sSMmeqM3jdCtQWBFsqvfbEIsL7.jpg",
     heroposter:
       "https://www.themoviedb.org/t/p/original/5sSMmeqM3jdCtQWBFsqvfbEIsL7.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 23,
@@ -940,6 +995,7 @@ export const featuredMovies = [
       "https://upload.wikimedia.org/wikipedia/en/thumb/f/fc/Fight_Club_poster.jpg/220px-Fight_Club_poster.jpg",
     heroposter:
       "https://upload.wikimedia.org/wikipedia/en/thumb/f/fc/Fight_Club_poster.jpg/220px-Fight_Club_poster.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 24,
@@ -957,6 +1013,7 @@ export const featuredMovies = [
       "https://th.bing.com/th/id/R.f97ecf62eef2b3b57ba71192b309d738?rik=5cz8Hu39N6ZUHw&riu=http%3a%2f%2fdiariodeunacinefila.files.wordpress.com%2f2011%2f09%2fposter-de-el-padrino.jpg&ehk=WhgwF6xslFBh0RB%2f4n9G10tz%2fhYQjMig7nL8t%2bt9DHE%3d&risl=&pid=ImgRaw&r=0",
     heroposter:
       "https://th.bing.com/th/id/R.f97ecf62eef2b3b57ba71192b309d738?rik=5cz8Hu39N6ZUHw&riu=http%3a%2f%2fdiariodeunacinefila.files.wordpress.com%2f2011%2f09%2fposter-de-el-padrino.jpg&ehk=WhgwF6xslFBh0RB%2f4n9G10tz%2fhYQjMig7nL8t%2bt9DHE%3d&risl=&pid=ImgRaw&r=0",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 25,
@@ -974,6 +1031,7 @@ export const featuredMovies = [
       "https://upload.wikimedia.org/wikipedia/en/thumb/6/67/Forrest_Gump_poster.jpg/220px-Forrest_Gump_poster.jpg",
     heroposter:
       "https://upload.wikimedia.org/wikipedia/en/thumb/6/67/Forrest_Gump_poster.jpg/220px-Forrest_Gump_poster.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 26,
@@ -991,6 +1049,7 @@ export const featuredMovies = [
       "https://upload.wikimedia.org/wikipedia/en/thumb/c/c1/The_Matrix_Poster.jpg/220px-The_Matrix_Poster.jpg",
     heroposter:
       "https://upload.wikimedia.org/wikipedia/en/thumb/c/c1/The_Matrix_Poster.jpg/220px-The_Matrix_Poster.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 27,
@@ -1008,6 +1067,7 @@ export const featuredMovies = [
       "https://th.bing.com/th/id/R.83648afbf4854e5dcb0a487459232ea9?rik=%2bUA1v6M16msEWw&riu=http%3a%2f%2fwww.cartelesmix.com%2fcarteles%2fcarteles%2fletras%2fsilenciocorderos11.jpg&ehk=NmaLxo6HgeKKGs0nSK4iQFeMNLLPJsWr2n%2fU1YFObck%3d&risl=&pid=ImgRaw&r=0",
     heroposter:
       "https://th.bing.com/th/id/R.83648afbf4854e5dcb0a487459232ea9?rik=%2bUA1v6M16msEWw&riu=http%3a%2f%2fwww.cartelesmix.com%2fcarteles%2fcarteles%2fletras%2fsilenciocorderos11.jpg&ehk=NmaLxo6HgeKKGs0nSK4iQFeMNLLPJsWr2n%2fU1YFObck%3d&risl=&pid=ImgRaw&r=0",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 28,
@@ -1025,6 +1085,7 @@ export const featuredMovies = [
       "https://th.bing.com/th/id/OIP.DOMT-C0e9hysmxYwqq-s6gHaKX?rs=1&pid=ImgDetMain",
     heroposter:
       "https://th.bing.com/th/id/OIP.DOMT-C0e9hysmxYwqq-s6gHaKX?rs=1&pid=ImgDetMain",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 29,
@@ -1042,6 +1103,7 @@ export const featuredMovies = [
       "https://th.bing.com/th/id/R.cceb6b9ac8e6fc80b1320a8ede0e1bb4?rik=6gRJag%2fLMPtmGw&riu=http%3a%2f%2fes.web.img3.acsta.net%2fpictures%2f17%2f07%2f05%2f09%2f37%2f477704.jpg&ehk=OVUd%2f7kX8t8zMyaa8KcuHymrJ8jQt%2fOzO7%2fDbZCoFyU%3d&risl=&pid=ImgRaw&r=0",
     heroposter:
       "https://th.bing.com/th/id/R.cceb6b9ac8e6fc80b1320a8ede0e1bb4?rik=6gRJag%2fLMPtmGw&riu=http%3a%2f%2fes.web.img3.acsta.net%2fpictures%2f17%2f07%2f05%2f09%2f37%2f477704.jpg&ehk=OVUd%2f7kX8t8zMyaa8KcuHymrJ8jQt%2fOzO7%2fDbZCoFyU%3d&risl=&pid=ImgRaw&r=0",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 30,
@@ -1059,6 +1121,7 @@ export const featuredMovies = [
       "https://th.bing.com/th/id/OIP.k7iY9B2Ij7c3ooHSisIIEgHaLM?rs=1&pid=ImgDetMain",
     heroposter:
       "https://th.bing.com/th/id/OIP.k7iY9B2Ij7c3ooHSisIIEgHaLM?rs=1&pid=ImgDetMain",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 31,
@@ -1076,6 +1139,7 @@ export const featuredMovies = [
       "https://th.bing.com/th/id/R.2c16c35610053ec14da2705309c18597?rik=sYFEA%2bdaDzjFSA&pid=ImgRaw&r=0",
     heroposter:
       "https://th.bing.com/th/id/R.2c16c35610053ec14da2705309c18597?rik=sYFEA%2bdaDzjFSA&pid=ImgRaw&r=0",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 32,
@@ -1091,6 +1155,7 @@ export const featuredMovies = [
       "On a journey to find the cure for a Tatarigami curse, Ashitaka finds himself in the middle of a war between the forest gods and a mining colony. In the struggle to reconcile the two sides, he also meets San, the Princess Mononoke.",
     posterUrl: "https://wallpapercave.com/wp/wp4108308.jpg",
     heroposter: "https://wallpapercave.com/wp/wp4108308.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
     id: 33,
@@ -1106,6 +1171,7 @@ export const featuredMovies = [
       "A linguist is recruited by the military to assist in translating alien communications after twelve mysterious spacecraft land around the world.",
     posterUrl: "https://pics.filmaffinity.com/arrival-150207636-large.jpg",
     heroposter: "https://pics.filmaffinity.com/arrival-150207636-large.jpg",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
 ];
 

@@ -10,4 +10,5 @@ export interface Movie {
   synopsis: string;
   posterUrl: string;
   heroposter: string;
+  trailerUrl: string;
 }
