@@ -2,6 +2,7 @@ import os
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, EmailStr
+from typing import Optional
 import httpx
 
 app = FastAPI()
@@ -15,18 +16,26 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# URLs internas del docker-compose
+
 # URLs internas del docker-compose, ahora por variable de entorno
 USER_SERVICE_URL = os.environ["USER_SERVICE_URL"]
 EMAIL_SERVICE_URL = os.environ["EMAIL_SERVICE_URL"]
 DELETE_USER_URL = os.environ["DELETE_USER_URL"]
 VERIFY_USER_URL = os.environ["VERIFY_USER_URL"]
 WELCOME_EMAIL_URL = os.environ["WELCOME_EMAIL_URL"]
+LOGIN_SERVICE_URL = os.environ["LOGIN_SERVICE_URL"]
+
 # Modelo de usuario
 class User(BaseModel):
     username: str
     email: EmailStr
     password: str
+
+# Modelo de usuario
+class LoginUser(BaseModel):
+    email_or_username: str  # Puede ser email o username
+    password: str
+
 
 @app.post("/saga/register/")
 async def saga_register(user: User):
@@ -78,3 +87,15 @@ async def saga_confirmar(token: str):
             return {"message": "Usuario verificado, pero no se pudo enviar el correo de bienvenida."}
 
         return {"message": "Cuenta verificada y correo de bienvenida enviado correctamente."}
+
+@app.post("/saga/login/")
+async def saga_login(user: LoginUser):
+    async with httpx.AsyncClient() as client:
+        r = await client.post(LOGIN_SERVICE_URL, json=user.dict())
+        if r.status_code != 200:
+            try:
+                detail = r.json().get("detail", "No se pudo iniciar sesión")
+            except Exception:
+                detail = "No se pudo iniciar sesión"
+            raise HTTPException(status_code=r.status_code, detail=detail)
+        return r.json()

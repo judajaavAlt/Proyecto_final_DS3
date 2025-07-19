@@ -6,16 +6,22 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
+    env_file:
+       - .env
     depends_on:
       - saga-orchestrator
 
   # FRONTEND LOGIN
   frontend-login:
     build:
-      context: ./Login
+      context: ./login
       dockerfile: Dockerfile
+      args:
+       PORT: 4200
     ports:
-      - "4200:80"
+      - "4200:4200"
+    env_file:
+       - .env
     depends_on:
       - saga-orchestrator
 
@@ -40,6 +46,16 @@ services:
     depends_on:
       db:
         condition: service_healthy
+  # LOGIN SERVICE (Login de usuarios)
+  login-service:
+    build: 
+      context: ./Servicios/login-service
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    depends_on:
+     db:
+      condition: service_healthy
 
   # EMAIL SERVICE (microservicio de correos)
   email-service:

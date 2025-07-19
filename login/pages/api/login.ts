@@ -1,4 +1,4 @@
-// pages/api/register.ts
+// pages/api/login.ts
 import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -11,7 +11,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const baseUrl = process.env.INTERNAL_API_URL;
 
   try {
-    const response = await fetch(`${baseUrl}/register/`, {
+    const response = await fetch(`${baseUrl}/login/`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(req.body)
@@ -20,11 +20,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const data = await response.json();
     res.status(response.status).json(data);
   } catch (error: unknown) {
-  let message = "Error interno del servidor";
-  if (error instanceof Error) {
-    message = error.message;
+    let message = "Error interno del servidor";
+    if (error instanceof Error) {
+      message = error.message;
+    }
+    res.status(500).json({ detail: message });
   }
-  res.status(500).json({ detail: message });
-}
-
 }
