@@ -2,11 +2,40 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ReviewSection.css'; // Importamos los estilos
 
+// Componente modal de login
+const LoginModal = ({ isOpen, onClose, onLoginSuccess }) => {
+  if (!isOpen) return null;
+  
+  return (
+    <div className="login-modal-overlay">
+      <div className="login-modal">
+        <div className="login-modal-content">
+          <h3>Inicia sesión</h3>
+          <p>Por favor inicia sesión para agregar una reseña</p>
+          <div className="login-modal-buttons">
+            <button 
+              className="login-btn"
+              onClick={() => window.location.href = '/login'}
+            >
+              Ir al login
+            </button>
+            <button 
+              className="cancel-btn"
+              onClick={onClose}
+            >
+              Cancelar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 // Información del usuario actual (en una app real, vendría de la autenticación)
 const currentUser = {
     name: 'Son Goku',
-    avatar: 'https://imgur.com/gallery/photo-of-dog-panko-every-day-YMNlwi9#/t/dog'
+    avatar: 'https://randomuser.me/api/portraits/men/11.jpg'
 };
 
 // Componente para una estrella individual, usando entidades HTML
@@ -22,15 +51,38 @@ const Star = ({ filled, interactive, onClick }) => (
 const StarRating = ({ rating, onRatingChange, readOnly = false }) => {
   const normalizedRating = rating/2;
   return (
-    <div className="star-rating">
-      {[...Array(5)].map((_, i) => (
-        <Star
-          key={i}
-          filled={i < rating}
-          interactive={!readOnly}
-          onClick={() => !readOnly && onRatingChange(i + 1)}
-        />
-      ))}
+    <div className={`star-rating ${!readOnly ? 'interactive' : ''}`}>
+      {[...Array(5)].map((_, i) => {
+        // Para estrellas interactivas, invertir el índice debido a flex-direction: row-reverse
+        const starIndex = !readOnly ? 5 - i : i;
+        const isFilled = !readOnly ? starIndex <= rating : i < rating;
+        
+        return (
+          <Star
+            key={i}
+            filled={isFilled}
+            interactive={!readOnly}
+            onClick={() => !readOnly && onRatingChange(starIndex)}
+          />
+        );
+      })}
+    </div>
+  );
+};
+
+// Componente para mostrar el puntaje promedio resumido
+const AverageRating = ({ reviews }) => {
+  if (!reviews.length) return null;
+  const avg = reviews.reduce((acc, r) => acc + r.rating, 0) / reviews.length;
+  return (
+    <div className="average-rating-summary">
+      <div className="average-rating-stars">
+        <StarRating rating={Math.round(avg)} readOnly={true} />
+      </div>
+      <div className="average-rating-info">
+        <span className="average-rating-score">{avg.toFixed(1)} / 5.0</span>
+        <span className="average-rating-count">({reviews.length} reseñas)</span>
+      </div>
     </div>
   );
 };
@@ -99,8 +151,9 @@ const ReviewItem = ({ review }) => {
 // Componente principal que une todo
 function ReviewSection() {
   const [reviews, setReviews] = useState([]);
+  const [showLoginModal, setShowLoginModal] = useState(false);
 
-  const API_URL = import.meta.env.VITE_API_BASE_URL;
+  const API_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001';
 
   useEffect(() => {
   fetch(`${API_URL}/reviews`)
@@ -111,32 +164,51 @@ function ReviewSection() {
 
 
   const handleAddReview = ({ text, rating }) => {
-    const userId = localStorage.getItem('userId');
     const newReview = {
       comment: text,
       rating,
       movieId: 111,
+      // Removemos author y avatar hardcodeados para que vengan del backend
     };
 
     fetch(`${API_URL}/reviews`, {
       method: 'POST',
       headers: { 
         'Content-Type': 'application/json',
-        'x-user-id': userId,
       },
+      credentials: 'include', // Importante: incluye las cookies
       body: JSON.stringify(newReview),
     })
-      .then(res => res.json())
-      .then(createdReview => {
+    .then(res => {
+      if (res.status === 401) {
+        return res.json().then(data => {
+          if (data.requiresLogin) {
+            // Mostrar modal/aviso para iniciar sesión
+            setShowLoginModal(true);
+            throw new Error('Requires login');
+          }
+          throw new Error(data.message || 'Error de autenticación');
+        });
+      }
+      return res.json();
+    })
+    .then(createdReview => {
+      // Usar los datos que vienen del backend (incluyendo author y avatar del usuario autenticado)
       const fullReview = {
         ...createdReview,
-        author: currentUser.name,
-        avatar: currentUser.avatar,
+        // Si el backend no incluye author/avatar, usar datos por defecto
+        author: createdReview.author || 'Usuario',
+        avatar: createdReview.avatar || 'https://randomuser.me/api/portraits/men/1.jpg',
         date: new Date().toLocaleDateString(),
-  };
-  setReviews([fullReview, ...reviews]);
-})
-      .catch(err => console.error('Error al enviar la reseña:', err));
+      };
+      setReviews([fullReview, ...reviews]);
+    })
+    .catch(err => {
+      if (err.message !== 'Requires login') {
+        console.error('Error al enviar la reseña:', err);
+        alert('Error al enviar la reseña: ' + err.message);
+      }
+    });
   };
 
 
@@ -146,9 +218,8 @@ function ReviewSection() {
         <h2>User Reviews</h2>
         <a href="#" className="view-all-link">View All</a>
       </div>
-      
+      <AverageRating reviews={reviews} />
       <AddReviewForm onAddReview={handleAddReview} />
-      
       <div className="reviews-list">
         {reviews.length > 0 ? (
           reviews.map(review => <ReviewItem key={review.id} review={review} />)
@@ -156,6 +227,12 @@ function ReviewSection() {
           <p className="no-reviews-message">No reviews yet. Be the first to share your thoughts!</p>
         )}
       </div>
+      
+      <LoginModal 
+        isOpen={showLoginModal}
+        onClose={() => setShowLoginModal(false)}
+        onLoginSuccess={() => setShowLoginModal(false)}
+      />
     </div>
   );
 }
