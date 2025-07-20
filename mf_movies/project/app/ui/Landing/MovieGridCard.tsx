@@ -78,7 +78,7 @@ export function MovieGridCard({ movie }: { readonly movie: Movie }) {
       {/* 1. Contenedor de la imagen */}
       <div className="relative">
         <img
-          src={movie.posterUrl}
+          src={movie.poster_url}
           alt={movie.title}
           className="w-full h-[35rem] object-cover rounded-lg transition-transform duration-300 hover:scale-105"
         />
@@ -118,7 +118,7 @@ export function MovieGridCard({ movie }: { readonly movie: Movie }) {
         <div className="flex items-center gap-4 text-[#FDF5E0] text-sm">
           <span className="flex items-center gap-1.5">
             <Calendar className="w-4 h-4" />
-            {movie.releaseYear}
+            {movie.release_year}
           </span>
           <span className="flex items-center gap-1.5">
             <Clock className="w-4 h-4" />

@@ -10,7 +10,6 @@ import {
   X,
 } from "lucide-react";
 
-import BottonG from "../ButtonG";
 
 type FiltersProps = {
   selectedGenre: string[];
@@ -129,7 +128,7 @@ export function Filters({
               <select
                 value={selectedYear}
                 onChange={(e) => setSelectedYear(e.target.value)}
-                className="  flex items-center    bg-gray-800 text-white rounded-lg px-4 py-2 border border-gray-700 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200 z-10"
+                className="  flex items-center    bg-gray-800 text-white rounded-lg px-4 py-2 border border-gray-700 focus:outline-none focus:border-[var(--red-light)] focus:ring-1 focus:ring-[var(--red-light)] transition-all duration-200 z-10"
                 style={{ minWidth: "8rem" }}
               >
                 <option value="Todos">Todos los años</option>
@@ -147,7 +146,7 @@ export function Filters({
               <select
                 value={selectedSort}
                 onChange={(e) => setSelectedSort(e.target.value)}
-                className="flex items-center bg-gray-800 text-white rounded-lg px-4 py-2 border border-gray-700 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200"
+                className="flex items-center bg-gray-800 text-white rounded-lg px-4 py-2 border border-gray-700 focus:outline-none focus:border-[var(--red-light)] focus:ring-1 focus:ring-[var(--red-light)] transition-all duration-200"
               >
                 <option value="A-Z">A-Z</option>
                 <option value="Z-A">Z-A</option>

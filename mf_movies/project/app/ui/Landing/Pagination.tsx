@@ -48,7 +48,7 @@ export function Pagination({
                 onClick={() => setCurrentPage(page)}
                 className={`w-10 h-10 rounded-lg transition-colors duration-200 ${
                   currentPage === page
-                    ? "bg-red-600 text-white"
+                    ? "bg-[var(--red-light)] text-white"
                     : "text-gray-400 hover:text-white hover:bg-gray-800"
                 }`}
               >

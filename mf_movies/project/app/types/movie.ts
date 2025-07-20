@@ -1,14 +1,14 @@
 export interface Movie {
   id: number;
   title: string;
-  releaseDate: string;
-  releaseYear: number;
+  release_date: string;
+  release_year: number;
   duration: number;
   classification: string;
   rating: number;
   genres: string[];
   synopsis: string;
-  posterUrl: string;
-  heroposter: string;
-  trailerUrl: string;
+  poster_url: string;
+  hero_poster: string;
+  trailer_url: string;
 }

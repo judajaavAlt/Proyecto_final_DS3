@@ -4,22 +4,35 @@ services:
       context: .
       dockerfile: Dockerfile.frontend
     ports:
-      - "3000:3000"  # Host:3000 → Contenedor:3000
+      - "3000:3000" # Host:3000 → Contenedor:3000
     volumes:
       - ./project:/app # Sincroniza código local con el contenedor
       - /app/node_modules # Aísla dependencias
+    command: ["pnpm", "run", "dev"]
     depends_on:
       - backend
+    environment:
+      - NEXT_PUBLIC_API_URL=http://backend:3001
 
   backend:
     build:
       context: .
-      dockerfile: Dockerfile.python
+      dockerfile: Dockerfile.backend
     ports:
-      - "5000:5000"
+      - "3001:3001" # Host:3001 → Contenedor:3001
+    volumes:
+      - ./Backend:/app # Sincroniza código local con el contenedor
+      - /app/node_modules # Aísla dependencias
+    environment:
+      - NODE_ENV=development
+      - PORT=3001
+      - DB_USER=myuser
+      - DB_HOST=db
+      - DB_NAME=mydatabase
+      - DB_PASSWORD=mypassword
+      - DB_PORT=5432
     depends_on:
-      db:
-        condition: service_healthy
+      - db
 
   db:
     image: postgres:16
@@ -33,7 +46,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD", "pg_isready", "-U", "postgres"]
+      test: ["CMD", "pg_isready", "-U", "myuser", "-d", "mydatabase"]
       interval: 10s
       retries: 5
 

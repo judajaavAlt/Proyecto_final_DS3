@@ -1,21 +1,26 @@
 # Usa la imagen oficial de Node.js
 FROM node:18-alpine
 
+# Instala pnpm
+RUN npm install -g pnpm
+
 # Establece el directorio de trabajo
 WORKDIR /app
 
-# Copia los archivos de tu proyecto Next.js
-COPY ./project/package*.json ./
-RUN npm install
+# Copia solo los archivos de manifiesto de dependencias
+COPY project/package.json project/pnpm-lock.yaml* ./
 
-# Copia el resto del proyecto
-COPY ./project .
+# Instala dependencias (solo se ejecuta si los archivos de manifiesto cambian)
+RUN pnpm install
 
-# Build de Next.js
-RUN npm run build
+# Copia el resto del código del proyecto
+COPY project/ .
 
-# Puerto expuesto (generalmente 3000 para Next.js)
+# Build de Next.js para producción
+RUN pnpm run build
+
+# Puerto expuesto
 EXPOSE 3000
 
-# Comando para iniciar la aplicación
-CMD ["npm", "run", "dev", "--", "--hostname", "0.0.0.0", "--port", "3000"]
+# Comando para iniciar la aplicación en modo producción
+CMD ["pnpm", "start"]

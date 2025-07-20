@@ -52,7 +52,7 @@ export default function FeatureMovies({
                 {/* Poster */}
                 <img
                   className="h-full w-full object-cover rounded-xl"
-                  src={movie.posterUrl}
+                  src={movie.poster_url}
                   alt={movie.title}
                 />
 
@@ -85,7 +85,7 @@ export default function FeatureMovies({
                   <div className="flex items-center justify-center h-full">
                     <Star className="w-6 h-6 text-yellow-400 inline-block mr-2" />
                     <span className="leading-none m-0 p-0 text-2xl font-bold">
-                      {movie.rating.toFixed(1)} / 5
+                      {movie.rating} / 5
                     </span>
                   </div>
                 </div>

@@ -62,9 +62,9 @@ export default function FooterMain() {
               <input
                 type="email"
                 placeholder="Tu email"
-                className="bg-gray-800 text-white px-4 py-3 rounded-l-lg flex-1 border border-gray-700 focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-300"
+                className="bg-gray-800 text-white px-4 py-3 rounded-l-lg flex-1 border border-gray-700 focus:border-[var(--red-light)] focus:ring-1 focus:ring-[var(--red-light)] transition-all duration-300"
               />
-              <button className="bg-red-600 hover:bg-red-700 px-6 py-3 rounded-r-lg transition-colors duration-300">
+              <button className="bg-[var(--red-light)] hover:bg-[var(--red-light)]/80 px-6 py-3 rounded-r-lg transition-colors duration-300">
                 <Mail className="w-5 h-5" />
               </button>
             </div>
