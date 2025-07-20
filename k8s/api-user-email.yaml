@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-user-email
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-user-email
+  template:
+    metadata:
+      labels:
+        app: api-user-email
+    spec:
+      containers:
+        - name: api-user-email
+          image: api-user-email:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+          env:
+            - name: DB_HOST
+              value: db-user
+            - name: DB_PORT
+              value: "5432"
+            - name: DB_NAME
+              value: userdb
+            - name: DB_USER
+              value: user
+            - name: DB_PASS
+              value: userpass
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-user-email
+spec:
+  selector:
+    app: api-user-email
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
+  type: ClusterIP
