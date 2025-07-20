@@ -1,7 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { LayoutGrid, List, Search, ChevronDown, ArrowUpAZ } from "lucide-react";
+import {
+  LayoutGrid,
+  List,
+  Search,
+  ChevronDown,
+  ArrowUpAZ,
+  X,
+} from "lucide-react";
+
+import BottonG from "../ButtonG";
 
 type FiltersProps = {
   selectedGenre: string[];
@@ -32,10 +41,34 @@ export function Filters({
   genres,
   years,
 }: Readonly<FiltersProps>) {
+  // Helper for genre selection logic
+  function handleGenreClick(genre: string) {
+    const isAll = genre === "Todos";
+    const isSelected = selectedGenre.includes(genre);
+
+    if (isAll) {
+      // If "All" is clicked, set only "All"
+      setSelectedGenre(["Todos"]);
+    } else {
+      if (selectedGenre.includes("Todos")) {
+        // If "All" is selected and another genre is clicked, remove "All" and add the genre
+        setSelectedGenre([genre]);
+      } else if (isSelected) {
+        // If genre is already selected, remove it
+        const newGenres = selectedGenre.filter((g) => g !== genre);
+        // If none left, default to "All"
+        setSelectedGenre(newGenres.length === 0 ? ["Todos"] : newGenres);
+      } else {
+        // Add genre to selection
+        setSelectedGenre([...selectedGenre, genre]);
+      }
+    }
+  }
+
   return (
     <div className="flex flex-col gap-3">
       <div>
-        <h4 className="text-red-500 font-medium mb-2">
+        <h4 className="text-[--red-light] font-medium mb-2">
           Nuestras Recomendaciones
         </h4>
         <h2 className="text-4xl font-bold">Películas Populares</h2>
@@ -51,8 +84,19 @@ export function Filters({
               placeholder="Search"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-gray-800 text-white rounded-full px-12 py-3 border border-gray-700 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200"
+              className="w-full bg-gray-800 text-white rounded-full px-12 py-3 border border-gray-700 focus:outline-none focus:border-[--red-light] focus:ring-1 focus:ring-[--red-light] transition-all duration-200 pr-12"
             />
+            {searchQuery && (
+              <button
+                type="button"
+                onClick={() => setSearchQuery("")}
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white focus:outline-none"
+                aria-label="Clear search"
+              >
+                {/* Usa el icono X de lucide-react */}
+                <X className="h-5 w-5" />
+              </button>
+            )}
           </div>
 
           <div className="flex items-center gap-3">
@@ -62,7 +106,7 @@ export function Filters({
                 onClick={() => setViewMode("grid")}
                 className={`p-2 rounded-md transition-colors duration-200 ${
                   viewMode === "grid"
-                    ? "bg-red-600 text-white"
+                    ? "bg-[--red-light] text-white"
                     : "text-gray-400 hover:text-white"
                 }`}
               >
@@ -72,7 +116,7 @@ export function Filters({
                 onClick={() => setViewMode("list")}
                 className={`p-2 rounded-md transition-colors duration-200 ${
                   viewMode === "list"
-                    ? "bg-red-600 text-white"
+                    ? "bg-[--red-light] text-white"
                     : "text-gray-400 hover:text-white"
                 }`}
               >
@@ -88,13 +132,13 @@ export function Filters({
                 className="  flex items-center    bg-gray-800 text-white rounded-lg px-4 py-2 border border-gray-700 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200 z-10"
                 style={{ minWidth: "8rem" }}
               >
-                <option value="All">All Years</option>
-                <option value="<">Before 2020</option>
+                <option value="Todos">Todos los años</option>
                 {years.map((year) => (
                   <option key={year} value={year.toString()}>
                     {year}
                   </option>
                 ))}
+                <option value="<">Antes de 2020</option>
               </select>
             </div>
 
@@ -107,10 +151,10 @@ export function Filters({
               >
                 <option value="A-Z">A-Z</option>
                 <option value="Z-A">Z-A</option>
-                <option value="YearDesc">Year (Newest)</option>
-                <option value="YearAsc">Year (Oldest)</option>
-                <option value="RatingDesc">Rating (High to Low)</option>
-                <option value="RatingAsc">Rating (Low to High)</option>
+                <option value="YearDesc">Año (Nuevo)</option>
+                <option value="YearAsc">Año (Antiguo)</option>
+                <option value="RatingDesc">Rating (Alta a Baja)</option>
+                <option value="RatingAsc">Rating (Baja a Alta)</option>
               </select>
             </div>
           </div>
@@ -118,28 +162,39 @@ export function Filters({
 
         {/* Genre pills */}
         <div className="flex items-center justify-center gap-3  ">
-          {genres.map((genre) => {
-            const isSelected = selectedGenre.includes(genre);
-            return (
-              <button
-                key={genre}
-                onClick={() =>
-                  setSelectedGenre(
-                    isSelected
-                      ? selectedGenre.filter((g) => g !== genre)
-                      : [...selectedGenre, genre]
-                  )
-                }
-                className={`px-8 py-3 rounded-full text-md font-medium transition-colors duration-200   ${
-                  isSelected
-                    ? "bg-red-600 text-white"
-                    : "bg-gray-800 text-gray-400 hover:text-white"
-                }`}
-              >
-                {genre}
-              </button>
-            );
-          })}
+          {/* "All" pill always first */}
+          <button
+            key="All"
+            onClick={() => handleGenreClick("Todos")}
+            className={`px-8 py-3 rounded-full text-md font-medium transition-all duration-200 ${
+              selectedGenre.length === 1 && selectedGenre[0] === "Todos"
+                ? "bg-[--red-light] text-white"
+                : "bg-gray-800 text-gray-400 hover:text-white hover:-translate-y-1  active:translate-y-[0.2rem] "
+            }`}
+          >
+            Todos
+          </button>
+          {genres
+            .filter((genre) => genre !== "Todos")
+            .map((genre) => {
+              const isSelected = selectedGenre.includes(genre);
+              return (
+                <button
+                  key={genre}
+                  onClick={() => handleGenreClick(genre)}
+                  className={`px-8 py-3 rounded-full text-md font-medium transition-all duration-200   
+                    
+                    
+                    ${
+                      isSelected
+                        ? "bg-[--red-light] text-white"
+                        : "bg-gray-800 text-gray-400 hover:text-white hover:-translate-y-1  active:translate-y-[0.2rem] "
+                    }`}
+                >
+                  {genre}
+                </button>
+              );
+            })}
         </div>
       </div>
     </div>

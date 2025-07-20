@@ -2,11 +2,9 @@
 
 /*     flex items-center gap-2 */
 
-.btn {
-  background-color: var(--red-light);
+.btn { 
   position: relative;
-  padding: 0.5rem 1rem;
-  color: #fdf5e0;
+  padding: 0.75rem 2rem; 
   overflow: hidden; /* Contiene la onda */
 
   border-radius: 9999px;

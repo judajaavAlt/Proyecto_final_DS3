@@ -54,7 +54,7 @@ export function HeroCarousel({
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50" />
 
               {/* Hero Description content */}
-              <div className="absolute bottom-1/4 left-16 max-w-2xl gap-4 flex flex-col">
+              <div className="absolute bottom-[10%] left-16 max-w-2xl gap-4 flex flex-col">
                 <div className="flex items-center gap-4 text-lg">
                   <span className="flex items-center gap-2">
                     <Calendar className="w-6 h-6" /> {movie.releaseYear}

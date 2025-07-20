@@ -67,7 +67,7 @@ const ButtonG: React.FC<ButtonGProps> = ({
       onClick={onClick}
     >
       {children}
-      <span className="txt">{text ?? "BLANK"}</span>
+      
     </button>
   );
 };

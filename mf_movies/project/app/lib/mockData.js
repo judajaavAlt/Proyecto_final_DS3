@@ -27,9 +27,10 @@ export const featuredMovies = [
     genres: ["Action", "Sci-Fi", "Adventure", "Fantasy", "Thriller"],
     synopsis:
       "In the year 2045, the real world is a harsh place. The only time Wade Watts truly feels alive is when he escapes to the OASIS...",
-    posterUrl: "https://m.media-amazon.com/images/I/71WAylLeCLL.jpg",
+    posterUrl:
+      "https://th.bing.com/th/id/R.1717cf334c3df9d3c5ad5d7e5955353f?rik=lEKm4V%2f4cTKFlw&riu=http%3a%2f%2fwww.slashfilm.com%2fwp%2fwp-content%2fimages%2freadyplayerone-teaserposter-full.jpg&ehk=XrWEx2BP3LXqI%2fiVCLPsPfTCru1fRb2G%2bR06fahMfkw%3d&risl=&pid=ImgRaw&r=0",
     heroposter:
-      "https://th.bing.com/th/id/OIP.c0q6NJYlJ3xK9UAj72yMFAHaLH?rs=1&pid=ImgDetMain",
+      "https://th.bing.com/th/id/R.1717cf334c3df9d3c5ad5d7e5955353f?rik=lEKm4V%2f4cTKFlw&riu=http%3a%2f%2fwww.slashfilm.com%2fwp%2fwp-content%2fimages%2freadyplayerone-teaserposter-full.jpg&ehk=XrWEx2BP3LXqI%2fiVCLPsPfTCru1fRb2G%2bR06fahMfkw%3d&risl=&pid=ImgRaw&r=0",
     trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
@@ -44,9 +45,9 @@ export const featuredMovies = [
     synopsis:
       "A young getaway driver relies on his passion for music to be the best in the game. When he meets the girl of his dreams...",
     posterUrl:
-      "https://th.bing.com/th/id/OIP.wDsSqp7qBcMwER6j8xN-ywHaLA?rs=1&pid=ImgDetMain",
+      "https://th.bing.com/th/id/R.bb2c781b3b67dd18c6a0465c25364127?rik=kfMH%2fNJtuK801w&riu=http%3a%2f%2fcdn.collider.com%2fwp-content%2fuploads%2f2017%2f05%2fbaby-driver-final-poster.jpeg&ehk=h3hnclIw44KJLItVE5ZQpIwh8goW460G51FTku8yK1s%3d&risl=&pid=ImgRaw&r=0",
     heroposter:
-      "https://th.bing.com/th/id/OIP.wDsSqp7qBcMwER6j8xN-ywHaLA?rs=1&pid=ImgDetMain",
+      "https://th.bing.com/th/id/R.bb2c781b3b67dd18c6a0465c25364127?rik=kfMH%2fNJtuK801w&riu=http%3a%2f%2fcdn.collider.com%2fwp-content%2fuploads%2f2017%2f05%2fbaby-driver-final-poster.jpeg&ehk=h3hnclIw44KJLItVE5ZQpIwh8goW460G51FTku8yK1s%3d&risl=&pid=ImgRaw&r=0",
     trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
@@ -61,9 +62,9 @@ export const featuredMovies = [
     synopsis:
       "In a post-apocalyptic wasteland, a woman rebels against a tyrannical ruler in search for her homeland...",
     posterUrl:
-      "https://fr.web.img3.acsta.net/pictures/15/04/14/18/30/215297.jpg",
+      "https://posterspy.com/wp-content/uploads/2015/03/madmax_2_small.jpg",
     heroposter:
-      "https://fr.web.img3.acsta.net/pictures/15/04/14/18/30/215297.jpg",
+      "https://posterspy.com/wp-content/uploads/2015/03/madmax_2_small.jpg",
     trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
@@ -78,9 +79,9 @@ export const featuredMovies = [
     synopsis:
       "A computer hacker is abducted into a digital world and forced to participate in gladiatorial games.",
     posterUrl:
-      "https://th.bing.com/th/id/OIP.DwUf_IPcQc0ANst2Jnhn4QHaKl?w=131&h=187&c=7&r=0&o=5&pid=1.7",
+      "https://tse1.mm.bing.net/th/id/OIP.46aplvbkj6wxXVJlV4k4jgHaK-?rs=1&pid=ImgDetMain&o=7&rm=3",
     heroposter:
-      "https://th.bing.com/th/id/OIP.DwUf_IPcQc0ANst2Jnhn4QHaKl?w=131&h=187&c=7&r=0&o=5&pid=1.7",
+      "https://tse1.mm.bing.net/th/id/OIP.46aplvbkj6wxXVJlV4k4jgHaK-?rs=1&pid=ImgDetMain&o=7&rm=3",
     trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
@@ -291,7 +292,7 @@ export const featuredMovies = [
     ratingText: "6.8/10",
     genres: ["Action", "Comedy", "Thriller"], // Traducido de "Acción", "Comedia", "Suspenso"
     synopsis:
-      "Un asesino a sueldo llamado Ladybug se encuentra con otros asesinos a",
+      "Un asesino a sueldo llamado Ladybug se encuentra con otros asesinos a sueldo para proteger a una niña de un grupo de gánsteres que la quieren secuestrar.",
     posterUrl:
       "https://www.themoviedb.org/t/p/original/tnPGFoeQpLznLplytqPjmvRIJ2F.jpg",
     heroposter:
@@ -578,8 +579,10 @@ export const featuredMovies = [
     genres: ["Drama", "Sci-Fi", "Thriller"],
     synopsis:
       "A linguist is recruited by the military to assist in translating alien communications after twelve mysterious spacecraft land around the world.",
-    posterUrl: "https://pics.filmaffinity.com/arrival-150207636-large.jpg",
-    heroposter: "https://pics.filmaffinity.com/arrival-150207636-large.jpg",
+    posterUrl:
+      "https://tse4.mm.bing.net/th/id/OIP.PGri9UDggRLzQ0yTf3wXpAHaKr?rs=1&pid=ImgDetMain&o=7&rm=3",
+    heroposter:
+      "https://tse4.mm.bing.net/th/id/OIP.PGri9UDggRLzQ0yTf3wXpAHaKr?rs=1&pid=ImgDetMain&o=7&rm=3",
     trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
   {
@@ -618,6 +621,24 @@ export const featuredMovies = [
       "https://palomaynacho.com/wp-content/uploads/2024/06/Demon-Slayer-trilogia.jpg",
     trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
   },
+  {
+    id: 36,
+    title: "Deadpool 2",
+    releaseDate: "June 1, 2018",
+    releaseYear: 2018,
+    duration: 119,
+    classification: "R",
+    rating: 5,
+    ratingText: "10.0/10",
+    genres: ["Drama", "Sci-Fi", "Thriller"],
+    synopsis:
+      "A linguist is recruited by the military to assist in translating alien communications after twelve mysterious spacecraft land around the world.",
+    posterUrl:
+      "https://cdnb.artstation.com/p/assets/images/images/036/976/157/large/ismael-fofana-deadpool-2-movie-poster-design.jpg?1619123645",
+    heroposter:
+      "https://cdnb.artstation.com/p/assets/images/images/036/976/157/large/ismael-fofana-deadpool-2-movie-poster-design.jpg?1619123645",
+    trailerUrl: "https://www.youtube.com/watch?v=x7uLutVRBfI",
+  },
 ];
 
 export const heroMovies = [
@@ -626,7 +647,7 @@ export const heroMovies = [
   featuredMovies[1],
   featuredMovies[2],
   featuredMovies[3],
-  featuredMovies[4],
+  featuredMovies[16],
 ];
 
 export const recentMovies = [
@@ -648,7 +669,6 @@ export const nextsMovies = [
 ];
 
 export const genres = [
-  "All",
   "Action",
   "Adventure",
   "Sci-Fi",

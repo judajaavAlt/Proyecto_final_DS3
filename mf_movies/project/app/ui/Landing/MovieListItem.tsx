@@ -8,6 +8,7 @@ export function MovieListItem({ movie }: { movie: Movie }) {
     <Link
       href={`/m/${movie.title}`}
       key={movie.id}
+      target="_blank"
       className="group bg-gradient-to-r from-gray-800 to-gray-900 rounded-xl overflow-hidden transform hover:scale-[1.02] transition-all duration-500 ease-out shadow-xl hover:shadow-2xl"
     >
       <div className="flex">

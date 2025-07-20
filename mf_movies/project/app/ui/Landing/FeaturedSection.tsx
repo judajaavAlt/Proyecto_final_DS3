@@ -26,6 +26,7 @@ export function FeaturedSection({
           <Link
             href={`/m/${movie.title}`}
             key={movie.id}
+            target="_blank"
             className="flex gap-4 items-start group transition-transform duration-300 hover:translate-x-2"
           >
             <div className="relative w-24 h-24 rounded-lg overflow-hidden">

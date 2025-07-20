@@ -22,7 +22,7 @@ export default function page({ movies }: { movies: Movie[] }) {
                 src={movie.posterUrl}
                 alt={`${movie.title} poster`}
                 //fill
-                className="object-cover"
+                className="object-cover w-full h-full"
                 sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 16vw"
               />
               <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">

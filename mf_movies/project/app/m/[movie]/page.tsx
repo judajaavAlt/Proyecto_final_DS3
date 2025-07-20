@@ -24,7 +24,7 @@ export default async function Page({ params }: PageProps) {
   const similarMovies = await getSimilarMovies(selectedMovie);
 
   return (
-    <div>
+    <div className="bg-[#0F172A]">
       <MovieDetail movie={selectedMovie} />
       <CarruselMovies movies={similarMovies} />
     </div>

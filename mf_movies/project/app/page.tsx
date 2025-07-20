@@ -33,8 +33,8 @@ import { getAllMovies } from "./lib/moviePort";
 
 export default function Home() {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
-  const [selectedGenre, setSelectedGenre] = useState<string[]>(["All"]);
-  const [selectedYear, setSelectedYear] = useState("All");
+  const [selectedGenre, setSelectedGenre] = useState<string[]>(["Todos"]);
+  const [selectedYear, setSelectedYear] = useState("Todos");
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedSort, setSelectedSort] = useState("A-Z");
@@ -63,7 +63,7 @@ export default function Home() {
     });
   }, []);
 
-  const moviesPerPage = 9;
+  const moviesPerPage = viewMode === "grid" ? 12 : 9;
 
   // Sort movies based on selected sort
   const sortedMovies = allMovies.slice().sort((a, b) => {
@@ -90,13 +90,15 @@ export default function Home() {
 
   // Filter movies based on search and filters
   const filteredMovies = sortedMovies.filter((movie) => {
-    const matchesSearch =
-      movie.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      movie.synopsis.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesSearch = movie.title
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
     const matchesGenre =
-      selectedGenre.length === 1 && selectedGenre[0] === "All" ? true : false;
+      selectedGenre.length === 1 && selectedGenre[0] === "Todos"
+        ? true
+        : selectedGenre.every((genre) => movie.genres.includes(genre));
     const matchesYear =
-      selectedYear === "All" ||
+      selectedYear === "Todos" ||
       (selectedYear === "<" && movie.releaseYear < 2020) ||
       movie.releaseYear?.toString() === selectedYear;
     return matchesSearch && matchesGenre && matchesYear;
@@ -119,7 +121,7 @@ export default function Home() {
   useEffect(() => {
     setCurrentPage(1);
     movePage();
-  }, [selectedGenre, selectedYear, searchQuery]);
+  }, [selectedGenre, selectedYear, searchQuery, selectedSort]);
 
   useEffect(() => {
     movePage();
@@ -133,11 +135,11 @@ export default function Home() {
     <div className="bg-[#0F172A]">
       <HeroCarousel moviesH={heroMovies} />
 
-      <section className="container mx-auto">
+      <section className="container mx-auto ">
         <FeatureMovies movies={featuredMovies.slice(0, 10)} />
       </section>
 
-      <section id="movie-list" className="container mx-auto ">
+      <section id="movie-list" className="container mx-auto my-12">
         <Filters
           selectedGenre={selectedGenre}
           setSelectedGenre={setSelectedGenre}
@@ -157,15 +159,15 @@ export default function Home() {
           {(() => {
             if (filteredMovies.length === 0) {
               return (
-                <h2 className="text-2xl text-center ">
+                <h4 className="text-2xl text-center ">
                   <PackageOpen className="mx-auto h-24 w-24 text-gray-400 " />
                   No se encontraron películas
-                </h2>
+                </h4>
               );
             }
             if (viewMode === "grid") {
               return (
-                <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                   {paginatedMovies.map((movie) => (
                     <MovieGridCard key={movie.id} movie={movie} />
                   ))}
