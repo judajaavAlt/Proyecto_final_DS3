@@ -11,42 +11,44 @@ data:
         server {
             listen 80;
 
+            
+
             # Frontend services
-            location /user/ {
-                proxy_pass http://frontend-user.default.svc.cluster.local;
-                proxy_set_header Host $host;
-                proxy_set_header X-Real-IP $remote_addr;
-            }
+            # location /user/ {
+            #     proxy_pass http://frontend-user.default.svc.cluster.local;
+            #     proxy_set_header Host $host;
+            #     proxy_set_header X-Real-IP $remote_addr;
+            # }
 
-            location /movie/ {
-                proxy_pass http://frontend-movie.default.svc.cluster.local;
-                proxy_set_header Host $host;
-                proxy_set_header X-Real-IP $remote_addr;
-            }
+            # location /movie/ {
+            #     proxy_pass http://frontend-movie.default.svc.cluster.local;
+            #     proxy_set_header Host $host;
+            #     proxy_set_header X-Real-IP $remote_addr;
+            # }
 
-            location /rating/ {
-                proxy_pass http://frontend-rating.default.svc.cluster.local;
-                proxy_set_header Host $host;
-                proxy_set_header X-Real-IP $remote_addr;
-            }
+            # location /rating/ {
+            #     proxy_pass http://frontend-rating.default.svc.cluster.local;
+            #     proxy_set_header Host $host;
+            #     proxy_set_header X-Real-IP $remote_addr;
+            # }
 
-            # API services
-            location /user/api/ {
-                proxy_pass http://api-user.default.svc.cluster.local;
-                proxy_set_header Host $host;
-                proxy_set_header X-Real-IP $remote_addr;
-            }
+            # # API services
+            # location /user/api/ {
+            #     proxy_pass http://api-user.default.svc.cluster.local;
+            #     proxy_set_header Host $host;
+            #     proxy_set_header X-Real-IP $remote_addr;
+            # }
 
-            location /movie/api/ {
-                proxy_pass http://api-movie.default.svc.cluster.local;
-                proxy_set_header Host $host;
-                proxy_set_header X-Real-IP $remote_addr;
-            }
+            # location /movie/api/ {
+            #     proxy_pass http://api-movie.default.svc.cluster.local;
+            #     proxy_set_header Host $host;
+            #     proxy_set_header X-Real-IP $remote_addr;
+            # }
 
-            location /rating/api/ {
-                proxy_pass http://api-rating.default.svc.cluster.local;
-                proxy_set_header Host $host;
-                proxy_set_header X-Real-IP $remote_addr;
-            }
+            # location /rating/api/ {
+            #     proxy_pass http://api-rating.default.svc.cluster.local;
+            #     proxy_set_header Host $host;
+            #     proxy_set_header X-Real-IP $remote_addr;
+            # }
         }
     }

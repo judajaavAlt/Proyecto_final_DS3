@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-user-saga
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-user-saga
+  template:
+    metadata:
+      labels:
+        app: api-user-saga
+    spec:
+      containers:
+        - name: api-user-saga
+          image: judajaav/api-user-saga:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+          env:
+              - name: REGISTER_SERVICE_URL
+                value: "http://register-user.default.svc.cluster.local/"
+              - name: LOGIN_SERVICE_URL
+                value: "http://login-user.default.svc.cluster.local/"
+              - name: EMAIL_SERVICE_URL
+                value: "http://email-user.default.svc.cluster.local/"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-user-saga
+spec:
+  selector:
+    app: api-user-saga
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
+  type: ClusterIP

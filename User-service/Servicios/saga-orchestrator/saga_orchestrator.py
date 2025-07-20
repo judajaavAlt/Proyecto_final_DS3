@@ -18,9 +18,9 @@ app.add_middleware(
 
 
 # URLs internas del docker-compose, ahora por variable de entorno
-REGISTER_SERVICE_URL = "http://register-user.default.svc.cluster.local/"
-LOGIN_SERVICE_URL = "http://login-user.default.svc.cluster.local/"
-EMAIL_SERVICE_URL = "http://email-user.default.svc.cluster.local/"
+REGISTER_SERVICE_URL = os.getenv("REGISTER_SERVICE_URL")
+LOGIN_SERVICE_URL = os.getenv("LOGIN_SERVICE_URL")
+EMAIL_SERVICE_URL = os.getenv("EMAIL_SERVICE_URL")
 
 USER_SERVICE_URL = REGISTER_SERVICE_URL+"/register/"
 EMAIL_SERVICE_URL = EMAIL_SERVICE_URL+"/send-confirmation/"
