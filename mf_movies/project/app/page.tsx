@@ -8,7 +8,7 @@ import { Filters } from "./ui/Landing/Filters";
 import { MovieGridCard } from "./ui/Landing/MovieGridCard";
 import { MovieListItem } from "./ui/Landing/MovieListItem";
 import { Pagination } from "./ui/Landing/Pagination";
-import FeatureMovies from "./ui/Landing/FeatureMovies";
+import TopMoviesSwipper from "./ui/Landing/TopMoviesSwipper";
 import { FeaturedSection } from "./ui/Landing/FeaturedSection";
 import SkeletonLanding from "./ui/Landing/SkeletonLanding"; // Versión de carga de la página
 
@@ -143,7 +143,7 @@ export default function Home() {
       <HeroCarousel moviesH={heroMovies} />
 
       <section className="container mx-auto ">
-        <FeatureMovies movies={TopMovies.slice(0, 10)} />
+        <TopMoviesSwipper movies={TopMovies.slice(0, 10)} />
       </section>
 
       <section id="movie-list" className="container mx-auto my-12">
@@ -168,12 +168,12 @@ export default function Home() {
             {/* Información principal */}
             <div className="flex flex-col gap-4 flex-1">
               <div className="flex items-center gap-3">
-                <div className="w-3 h-3 bg-[var(--red-light)] rounded-full animate-pulse"></div>
                 <h3 className="text-2xl font-bold text-white">
                   {filteredMovies.length === 1
                     ? "Película encontrada"
                     : `${filteredMovies.length} Películas encontradas`}
                 </h3>
+                <div className="w-3 h-3 bg-[var(--red-light)] rounded-full animate-pulse"></div>
               </div>
 
               <p className="text-gray-300 text-sm max-w-lg leading-relaxed">

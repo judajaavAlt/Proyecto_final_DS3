@@ -18,6 +18,7 @@ const {
   getRecentMovies,
   getAllGenres,
   searchMovies,
+  getUpcomingMovies,
 } = require("./db");
 
 // Probar conexión a la base de datos al iniciar
@@ -111,7 +112,7 @@ app.get("/top-movies", async (req, res) => {
 // Películas recientes
 app.get("/recent-movies", async (req, res) => {
   try {
-    const movies = await getRecentMovies(10);
+    const movies = await getRecentMovies(5);
     res.json(movies);
   } catch (error) {
     console.error("Error en /recent-movies:", error);
@@ -122,7 +123,7 @@ app.get("/recent-movies", async (req, res) => {
 // Próximas películas (películas más recientes)
 app.get("/nexts-movies", async (req, res) => {
   try {
-    const movies = await getRecentMovies(6);
+    const movies = await getUpcomingMovies(5);
     res.json(movies);
   } catch (error) {
     console.error("Error en /nexts-movies:", error);

@@ -164,7 +164,7 @@ export function HeroCarousel({
                   {movie.title}
                 </h1>
                 <div className="flex items-center gap-4">
-                  <AccorntG url={`/m/${movie.title}`} text="Ver Reseñas">
+                  <AccorntG url={`/m/${movie.title}`} text="Ver Mas Detalles">
                     <TvMinimalPlay className="inline" />
                   </AccorntG>
                   <AccorntG url={movie.trailer_url} text="Ver Tráiler">

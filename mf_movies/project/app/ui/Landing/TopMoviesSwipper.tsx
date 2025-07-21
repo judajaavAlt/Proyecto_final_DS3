@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { Star } from "lucide-react";
 
-import "./FeatureMovies.css";
+import "./TopMoviesSwipper.css";
 
 // Importa los estilos de Swiper
 import "./swipperStyle.css";
@@ -11,7 +11,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-export default function FeatureMovies({
+export default function TopMoviesSwipper({
   movies,
 }: {
   readonly movies: readonly Movie[];
@@ -23,27 +23,23 @@ export default function FeatureMovies({
         rel="stylesheet"
       />
 
-      <h3 className="text-4xl font-bold  mb-8 ml-4">Las Mejores Peliculas</h3>
+      <h3 className="text-4xl font-bold mb-8 ml-4">Las Mejores Peliculas</h3>
 
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
-        spaceBetween={50}
-        slidesPerView={2}
+        spaceBetween={20}
+        slidesPerView={1}
+        slidesOffsetBefore={0}
+        slidesOffsetAfter={0}
         navigation
         pagination={{ clickable: true }}
         autoplay={{ delay: 50000 }}
         breakpoints={{
-          640: {
-            slidesPerView: 3,
-          },
-          768: {
-            slidesPerView: 4,
-          },
-          1024: {
-            slidesPerView: 5,
-          },
+          640: { slidesPerView: 3 },
+          768: { slidesPerView: 4 },
+          1024: { slidesPerView: 5 },
         }}
-        className="!pb-12 relative"
+        className="swiper pb-12"
       >
         {movies.map((movie, index) => (
           <SwiperSlide key={movie.id}>
@@ -59,7 +55,7 @@ export default function FeatureMovies({
                 {/* Overlay with movie title */}
                 <div className="absolute bottom-0 -left-3 z-20 p-4">
                   <span
-                    className="text-[12rem] font-black text-transparent bg-[--gold] bg-clip-text leading-none m-0 p-0 -translate-x-8 transition-all duration-300  "
+                    className="text-[12rem] font-black text-transparent bg-[--gold] bg-clip-text leading-none m-0 p-0 -translate-x-8 transition-all duration-300"
                     style={{
                       fontFamily: "'Kantumruy Pro', sans-serif",
                       display: "inline-block",

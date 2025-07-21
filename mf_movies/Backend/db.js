@@ -227,7 +227,7 @@ const getRecentMovies = async (limit = 10) => {
       LEFT JOIN genres g ON mg.genre_id = g.id
       GROUP BY m.id, m.title, m.release_date, m.release_year, m.duration, 
                m.classification, m.rating, m.synopsis, m.poster_url, m.hero_poster, m.trailer_url
-      ORDER BY m.release_year DESC, m.rating DESC
+      ORDER BY RANDOM()
       LIMIT $1
     `;
 
@@ -286,6 +286,39 @@ const searchMovies = async (searchTerm, limit = 20) => {
   }
 };
 
+// Función para obtener películas próximas
+const getUpcomingMovies = async (limit = 10) => {
+  try {
+    const query = `
+      SELECT 
+        m.id,
+        m.title,
+        m.release_date,
+        m.release_year,
+        m.duration,
+        m.classification,
+        m.rating,
+        m.synopsis,
+        m.poster_url,
+        m.hero_poster,
+        m.trailer_url,
+        array_agg(g.name) as genres
+      FROM movies m
+      LEFT JOIN movie_genres mg ON m.id = mg.movie_id
+      LEFT JOIN genres g ON mg.genre_id = g.id
+      GROUP BY m.id, m.title, m.release_date, m.release_year, m.duration, 
+               m.classification, m.rating, m.synopsis, m.poster_url, m.hero_poster, m.trailer_url
+      ORDER BY RANDOM()
+      LIMIT $1
+    `;
+    const result = await pool.query(query, [limit]);
+    return result.rows;
+  } catch (err) {
+    console.error("Error obteniendo películas próximas:", err);
+    throw err;
+  }
+};
+
 module.exports = {
   pool,
   testConnection,
@@ -295,6 +328,7 @@ module.exports = {
   getMoviesByGenre,
   getFeaturedMovies,
   getRecentMovies,
+  getUpcomingMovies,
   getAllGenres,
   searchMovies,
 };

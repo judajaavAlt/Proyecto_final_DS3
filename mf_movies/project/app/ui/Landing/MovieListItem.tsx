@@ -1,4 +1,4 @@
-import { Star, Calendar, Clock, Film, Play } from "lucide-react";
+import { Star, Calendar, Clock, Film, Play, TvMinimalPlay } from "lucide-react";
 import Link from "next/link";
 
 import { Movie } from "../../types/movie";
@@ -44,7 +44,7 @@ export function MovieListItem({ movie }: { movie: Movie }) {
           {/* Botón de play mejorado */}
           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
             <div className="w-16 h-16 bg-[var(--red-light)]/90 backdrop-blur-sm rounded-full flex items-center justify-center transform scale-0 group-hover:scale-100 transition-transform duration-300">
-              <Play className="w-8 h-8 text-white fill-current" />
+              <TvMinimalPlay className="w-8 h-8 text-white fill-current" />
             </div>
           </div>
         </div>
@@ -110,9 +110,6 @@ export function MovieListItem({ movie }: { movie: Movie }) {
           </div>
         </div>
       </div>
-
-      {/* Efecto de borde en hover */}
-      <div className="absolute inset-0 border-2 border-[var(--red-light)]/0 group-hover:border-[var(--red-light)]/50 rounded-2xl transition-all duration-500 pointer-events-none" />
     </Link>
   );
 }

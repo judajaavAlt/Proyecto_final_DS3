@@ -10,7 +10,6 @@ import {
   X,
 } from "lucide-react";
 
-
 type FiltersProps = {
   selectedGenre: string[];
   setSelectedGenre: (genre: string[]) => void;
@@ -160,7 +159,7 @@ export function Filters({
         </div>
 
         {/* Genre pills */}
-        <div className="flex items-center justify-center gap-3  ">
+        <div className="flex items-center justify-center gap-[0.5rem]">
           {/* "All" pill always first */}
           <button
             key="All"
