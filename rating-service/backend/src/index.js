@@ -25,6 +25,7 @@ app.use(cookieParser());
 
 // Función para validar la sesión del usuario con el microservicio de autenticación
 async function validateUserSession(req) {
+  // Extraer la cookie 'session' del header
   const sessionCookie = req.headers.cookie?.split(';')
     .find(c => c.trim().startsWith('session='));
   
@@ -36,13 +37,12 @@ async function validateUserSession(req) {
 
   try {
     // Usar fetch global de Node.js
-    const response = await fetch(`${AUTH_SERVICE_URL}`, {
-      method: 'POST',
+    const response = await fetch(`${AUTH_SERVICE_URL}/verify-session/`, {
+      method: 'GET',
       headers: {
-        'Content-Type': 'application/json',
         'Cookie': `session=${sessionValue}`
-      },
-      body: JSON.stringify({ session: sessionValue })
+      }
+      // No body necesario
     });
     
     if (!response.ok) {
@@ -50,7 +50,7 @@ async function validateUserSession(req) {
     }
 
     const data = await response.json();
-    return data;
+    return data; // { username, email }
   } catch (error) {
     console.error('Error validando sesión:', error);
     return null;
