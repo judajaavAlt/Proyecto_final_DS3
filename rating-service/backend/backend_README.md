@@ -63,6 +63,6 @@ npx prisma generate
 npm run dev
 ```
 
-Por defecto correrá en `http://localhost:PUERTO/api/reviews`.
+Por defecto correrá en `http://localhost:PUERTO/reviews`.
 
 ---

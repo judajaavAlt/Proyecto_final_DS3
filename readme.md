@@ -177,6 +177,7 @@ document.cookie = "session=; path=/; domain=localhost; expires=Thu, 01 Jan 1970 
 
 ### **Rating Service (Puerto 3001):**
 - `GET /reviews` - Obtener todas las reseñas
+- `GET /reviews/:movieId` - Obtener reseñas de una película específica
 - `POST /reviews` - Crear nueva reseña (requiere autenticación)
 - `GET /reviews/average/:movieId` - Promedio de calificaciones
 

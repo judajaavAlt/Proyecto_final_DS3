@@ -1,6 +1,36 @@
 {
   "reviews": [
     {
+      "id": 13,
+      "userId": 101,
+      "movieId": 3,
+      "text": "ejemplo para la movie 3",
+      "rating": 4,
+      "date": "2025-07-21T20:36:03.576Z",
+      "author": "Ana Torres",
+      "avatar": "https://randomuser.me/api/portraits/women/1.jpg"
+    },
+    {
+      "id": 12,
+      "userId": 101,
+      "movieId": 11,
+      "text": "sdbasdbas",
+      "rating": 3,
+      "date": "2025-07-20T22:15:20.965Z",
+      "author": "Ana Torres",
+      "avatar": "https://randomuser.me/api/portraits/men/1.jpg"
+    },
+    {
+      "id": 11,
+      "userId": 101,
+      "movieId": 11,
+      "text": "No me gusta",
+      "rating": 3,
+      "date": "2025-07-20T22:10:46.759Z",
+      "author": "Ana Torres",
+      "avatar": "https://randomuser.me/api/portraits/men/1.jpg"
+    },
+    {
       "id": 1,
       "userId": 101,
       "movieId": 1,

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ReviewSection from "./components/ReviewSection";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   const [showModal, setShowModal] = useState(false);
@@ -14,23 +15,11 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-800 text-white">
-      <button
-        className="bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded"
-        onClick={() => setShowModal(true)}
-      >
-        Rate Movie
-      </button>
-
-      {/* {showModal && (
-        <RatingModal
-          movie={movie}
-          onClose={() => setShowModal(false)}
-          onSubmit={handleSubmit}
-        />
-      )} */}
-      <ReviewSection />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/review/:movieId" element={<ReviewSection />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

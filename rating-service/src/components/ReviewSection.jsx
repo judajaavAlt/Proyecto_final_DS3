@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './ReviewSection.css'; // Importamos los estilos
 
 // Componente modal de login
@@ -152,22 +152,23 @@ const ReviewItem = ({ review }) => {
 function ReviewSection() {
   const [reviews, setReviews] = useState([]);
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const { movieId } = useParams();
 
   const API_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001';
 
   useEffect(() => {
-  fetch(`${API_URL}/reviews`)
-    .then((res) => res.json())
-    .then((data) => setReviews(data))
-    .catch((err) => console.error("Error al cargar reseñas:", err));
-}, []);
-
+    if (!movieId) return;
+    fetch(`${API_URL}/reviews/${movieId}`)
+      .then((res) => res.json())
+      .then((data) => setReviews(data))
+      .catch((err) => console.error("Error al cargar reseñas:", err));
+  }, [API_URL, movieId]);
 
   const handleAddReview = ({ text, rating }) => {
     const newReview = {
       comment: text,
       rating,
-      movieId: 111,
+      movieId: Number(movieId), // Usar el movieId de la URL
       // Removemos author y avatar hardcodeados para que vengan del backend
     };
 

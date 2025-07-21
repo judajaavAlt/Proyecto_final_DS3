@@ -79,6 +79,28 @@ app.get('/reviews', async (req, res) => {
   }
 });
 
+// GET reviews de una película específica
+app.get('/reviews/:movieId', async (req, res) => {
+  const { movieId } = req.params;
+  try {
+    if (usePrisma) {
+      const reviews = await prisma.review.findMany({
+        where: { movieId: parseInt(movieId) },
+        orderBy: { id: 'desc' }
+      });
+      res.json(reviews);
+    } else {
+      // Leer de db.json
+      const data = await fs.readJson(DB_PATH).catch(() => ({ reviews: [] }));
+      const filtered = (data.reviews || []).filter(r => r.movieId === parseInt(movieId));
+      res.json(filtered);
+    }
+  } catch (err) {
+    console.error("Error al obtener reseñas por movieId:", err);
+    res.status(500).json({ error: "Error interno del servidor" });
+  }
+});
+
 // POST - Crear nueva reseña
 app.post('/reviews', async (req, res) => {
   const sessionValidation = await validateUserSession(req);
