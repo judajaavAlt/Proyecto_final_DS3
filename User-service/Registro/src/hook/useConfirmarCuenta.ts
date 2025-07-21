@@ -11,7 +11,7 @@ export function useConfirmarCuenta() {
 
     if (!token) return;
 
-    fetch(`/api/confirmar-cuenta?token=${token}`)
+    fetch(`http://localhost:4000/saga/confirmar-cuenta?token=${token}/`)
       .then(async res => {
         const data = await res.json();
         if (res.ok) {

@@ -10,6 +10,9 @@ const nextConfig: NextConfig = {
     ],
   },
   output: "standalone",
+
+  basePath: "/register",
+  trailingSlash: true,
 };
 
 export default nextConfig;

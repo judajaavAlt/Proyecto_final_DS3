@@ -125,7 +125,7 @@ export default function LoginModal() {
         </form>
         
         <p className={styles.signupText}>
-          ¿No tienes una cuenta? <a href="http://localhost:3000/register">Regístrate aquí.</a>
+          ¿No tienes una cuenta? <a href="http://localhost:4000/register/">Regístrate aquí.</a>
         </p>
       </div>
     </div>

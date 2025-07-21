@@ -11,6 +11,26 @@ data:
         server {
             listen 80;
 
+            ## User service
+            location /login/ {
+                proxy_pass http://front-user-login.default.svc.cluster.local;
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+            }
+
+            location /register/ {
+                proxy_pass http://front-user-register.default.svc.cluster.local;
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+            }
+
+            location /saga/ {
+                rewrite ^/saga/(.*)$ /$1 break;
+                proxy_pass http://api-user-saga.default.svc.cluster.local;
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+            }
+
             
 
             # Frontend services

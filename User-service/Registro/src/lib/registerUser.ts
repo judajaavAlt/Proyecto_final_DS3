@@ -2,7 +2,7 @@
 
 export async function registerUser(data: { username: string; email: string; password: string; }) {
   // Ahora llamas a tu propia API route, no al orquestador directamente
-  const response = await fetch("http://localhost:3000/api/saga/register", {
+  const response = await fetch("http://localhost:4000/saga/register/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
