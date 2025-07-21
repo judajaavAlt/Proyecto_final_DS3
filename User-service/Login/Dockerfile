@@ -14,6 +14,8 @@ COPY next.config.js ./
 COPY tsconfig.json ./
 COPY .env.local ./
 
+RUN npm list jsonwebtoken || npm install jsonwebtoken
+RUN npm list @types/jsonwebtoken || npm install --save-dev @types/jsonwebtoken
 
 RUN npm run build
 
