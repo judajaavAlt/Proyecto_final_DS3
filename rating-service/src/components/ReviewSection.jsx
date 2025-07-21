@@ -32,10 +32,17 @@ const LoginModal = ({ isOpen, onClose, onLoginSuccess }) => {
   );
 };
 
+// Utilidad para generar avatar Dicebear
+function getAvatarUrl(author) {
+  if (!author) return 'https://api.dicebear.com/6.x/bottts/svg?seed=anonimo';
+  const seed = author.replace(/\s+/g, '');
+  return `https://api.dicebear.com/6.x/bottts/svg?seed=${encodeURIComponent(seed)}`;
+}
+
 // Información del usuario actual (en una app real, vendría de la autenticación)
 const currentUser = {
     name: 'Son Goku',
-    avatar: 'https://randomuser.me/api/portraits/men/11.jpg'
+    avatar: getAvatarUrl('Son Goku')
 };
 
 // Componente para una estrella individual, usando entidades HTML
@@ -130,7 +137,7 @@ const ReviewItem = ({ review }) => {
 
   return (
     <div className="review-item">
-      <img src={review.avatar} alt={altText} className="avatar" />
+      <img src={getAvatarUrl(review.author)} alt={altText} className="avatar" />
       <div className="review-content">
         <div className="review-header">
           <div>
@@ -199,7 +206,6 @@ function ReviewSection() {
         ...createdReview,
         // Si el backend no incluye author/avatar, usar datos por defecto
         author: createdReview.author || 'Usuario',
-        avatar: createdReview.avatar || 'https://randomuser.me/api/portraits/men/1.jpg',
         date: new Date().toLocaleDateString(),
       };
       setReviews([fullReview, ...reviews]);

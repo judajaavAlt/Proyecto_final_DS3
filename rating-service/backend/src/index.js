@@ -3,7 +3,6 @@ const express = require('express');
 const cors = require('cors');
 const fs = require('fs-extra');
 const cookieParser = require('cookie-parser');
-const fetch = require('node-fetch');
 const app = express();
 
 const PORT = process.env.PORT || 3001;
@@ -36,9 +35,7 @@ async function validateUserSession(req) {
   const sessionValue = sessionCookie.split('=')[1];
 
   try {
-    // Usar node-fetch en lugar de fetch global
-    const fetch = (await import('node-fetch')).default;
-    
+    // Usar fetch global de Node.js
     const response = await fetch(`${AUTH_SERVICE_URL}`, {
       method: 'POST',
       headers: {
@@ -126,14 +123,11 @@ app.post('/reviews', async (req, res) => {
           movieId: parseInt(movieId)
         },
       });
-      
-      // Agregar datos del usuario autenticado a la respuesta
+      // Agregar solo el nombre del usuario autenticado a la respuesta
       const reviewWithUser = {
         ...newReview,
-        author: sessionValidation.name,
-        avatar: `https://randomuser.me/api/portraits/${sessionValidation.id % 2 === 0 ? 'women' : 'men'}/${sessionValidation.id}.jpg`
+        author: sessionValidation.name
       };
-      
       res.status(201).json(reviewWithUser);
     } else {
       // Guardar en db.json
@@ -146,12 +140,10 @@ app.post('/reviews', async (req, res) => {
         text: comment,
         rating: Number(rating),
         date: new Date().toISOString(),
-        author: sessionValidation.name,
-        avatar: `https://randomuser.me/api/portraits/${sessionValidation.id % 2 === 0 ? 'women' : 'men'}/${sessionValidation.id}.jpg`
+        author: sessionValidation.name
       };
       reviews.unshift(newReview);
       await fs.writeJson(DB_PATH, { reviews }, { spaces: 2 });
-      
       res.status(201).json(newReview);
     }
   } catch (error) {
