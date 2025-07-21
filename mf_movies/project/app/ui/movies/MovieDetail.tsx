@@ -150,7 +150,7 @@ const MovieDetail: React.FC<MovieDetailProps> = ({ movie }) => {
                   )}
 
                   <a
-                    href={`/review/${movie.title}`}
+                    href={`/review/${movie.id}`}
                     target="_blank"
                     className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--gold)] hover:bg-[var(--gold)]/80 text-black rounded-lg transition-colors duration-200 font-medium"
                   >
