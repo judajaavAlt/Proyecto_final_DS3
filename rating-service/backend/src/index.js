@@ -126,7 +126,7 @@ app.post('/reviews', async (req, res) => {
       // Agregar solo el nombre del usuario autenticado a la respuesta
       const reviewWithUser = {
         ...newReview,
-        author: sessionValidation.name
+        author: sessionValidation.username
       };
       res.status(201).json(reviewWithUser);
     } else {
