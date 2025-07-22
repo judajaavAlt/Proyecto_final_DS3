@@ -1,0 +1,20 @@
+// Prisma schema for MySQL
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Review {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  movieId   Int
+  text      String
+  rating    Float
+  date      DateTime @default(now())
+  author    String
+} 

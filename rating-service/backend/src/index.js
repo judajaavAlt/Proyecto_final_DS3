@@ -1,20 +1,14 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const fs = require('fs-extra');
 const cookieParser = require('cookie-parser');
 const app = express();
 
 const PORT = process.env.PORT || 3001;
-const DB_PATH = './db.json';
 const AUTH_SERVICE_URL = process.env.AUTH_SERVICE_URL || 'http://localhost:3002/validate-session';
 
 const { PrismaClient } = require('@prisma/client');
-let prisma;
-const usePrisma = !!process.env.DATABASE_URL;
-if (usePrisma) {
-  prisma = new PrismaClient();
-}
+const prisma = new PrismaClient();
 
 app.use(cors({
   origin: true,
@@ -37,7 +31,7 @@ async function validateUserSession(req) {
 
   try {
     // Usar fetch global de Node.js
-    const response = await fetch(`${AUTH_SERVICE_URL}/verify-session/`, {
+    const response = await fetch(`${AUTH_SERVICE_URL}/saga/verify-session/`, {
       method: 'GET',
       headers: {
         'Cookie': `session=${sessionValue}`
@@ -60,16 +54,10 @@ async function validateUserSession(req) {
 // GET
 app.get('/reviews', async (req, res) => {
   try {
-    if (usePrisma) {
-      const reviews = await prisma.review.findMany({
-        orderBy: { id: 'desc' }
-      });
-      res.json(reviews);
-    } else {
-      // Leer de db.json
-      const data = await fs.readJson(DB_PATH).catch(() => ({ reviews: [] }));
-      res.json(data.reviews || []);
-    }
+    const reviews = await prisma.review.findMany({
+      orderBy: { id: 'desc' }
+    });
+    res.json(reviews);
   } catch (err) {
     console.error("Error al obtener reseñas:", err);
     res.status(500).json({ error: "Error interno del servidor" });
@@ -80,18 +68,11 @@ app.get('/reviews', async (req, res) => {
 app.get('/reviews/:movieId', async (req, res) => {
   const { movieId } = req.params;
   try {
-    if (usePrisma) {
-      const reviews = await prisma.review.findMany({
-        where: { movieId: parseInt(movieId) },
-        orderBy: { id: 'desc' }
-      });
-      res.json(reviews);
-    } else {
-      // Leer de db.json
-      const data = await fs.readJson(DB_PATH).catch(() => ({ reviews: [] }));
-      const filtered = (data.reviews || []).filter(r => r.movieId === parseInt(movieId));
-      res.json(filtered);
-    }
+    const reviews = await prisma.review.findMany({
+      where: { movieId: parseInt(movieId) },
+      orderBy: { id: 'desc' }
+    });
+    res.json(reviews);
   } catch (err) {
     console.error("Error al obtener reseñas por movieId:", err);
     res.status(500).json({ error: "Error interno del servidor" });
@@ -114,38 +95,20 @@ app.post('/reviews', async (req, res) => {
   const { comment, rating, movieId } = req.body;
   
   try {
-    if (usePrisma) {
-      const newReview = await prisma.review.create({
-        data: {
-          text: comment,
-          rating: Number(rating),
-          userId: userId, // Usa el ID real del usuario autenticado
-          movieId: parseInt(movieId)
-        },
-      });
-      // Agregar solo el nombre del usuario autenticado a la respuesta
-      const reviewWithUser = {
-        ...newReview,
-        author: sessionValidation.username
-      };
-      res.status(201).json(reviewWithUser);
-    } else {
-      // Guardar en db.json
-      const data = await fs.readJson(DB_PATH).catch(() => ({ reviews: [] }));
-      const reviews = data.reviews || [];
-      const newReview = {
-        id: reviews.length ? Math.max(...reviews.map(r => r.id)) + 1 : 1,
-        userId: userId,
-        movieId: parseInt(movieId),
+    const newReview = await prisma.review.create({
+      data: {
         text: comment,
         rating: Number(rating),
-        date: new Date().toISOString(),
-        author: sessionValidation.name
-      };
-      reviews.unshift(newReview);
-      await fs.writeJson(DB_PATH, { reviews }, { spaces: 2 });
-      res.status(201).json(newReview);
-    }
+        userId: userId, // Usa el ID real del usuario autenticado
+        movieId: parseInt(movieId)
+      },
+    });
+    // Agregar solo el nombre del usuario autenticado a la respuesta
+    const reviewWithUser = {
+      ...newReview,
+      author: sessionValidation.username
+    };
+    res.status(201).json(reviewWithUser);
   } catch (error) {
     console.error('❌ [POST] Error al crear reseña:', error);
     res.status(500).json({ error: 'Error interno del servidor' });
@@ -157,50 +120,27 @@ app.get('/reviews/average/:movieId', async (req, res) => {
   const { movieId } = req.params;
   
   try {
-    if (usePrisma) {
-      const reviews = await prisma.review.findMany({
-        where: { movieId: parseInt(movieId) },
-        select: { rating: true }
-      });
-      
-      if (reviews.length === 0) {
-        return res.json({ 
-          average: 0, 
-          count: 0, 
-          movieId: parseInt(movieId) 
-        });
-      }
-      
-      const totalRating = reviews.reduce((sum, review) => sum + review.rating, 0);
-      const average = totalRating / reviews.length;
-      
-      res.json({
-        average: parseFloat(average.toFixed(1)),
-        count: reviews.length,
-        movieId: parseInt(movieId)
-      });
-    } else {
-      // Calcular promedio desde db.json
-      const data = await fs.readJson(DB_PATH).catch(() => ({ reviews: [] }));
-      const movieReviews = (data.reviews || []).filter(r => r.movieId === parseInt(movieId));
-      
-      if (movieReviews.length === 0) {
-        return res.json({ 
-          average: 0, 
-          count: 0, 
-          movieId: parseInt(movieId) 
-        });
-      }
-      
-      const totalRating = movieReviews.reduce((sum, review) => sum + review.rating, 0);
-      const average = totalRating / movieReviews.length;
-      
-      res.json({
-        average: parseFloat(average.toFixed(1)),
-        count: movieReviews.length,
-        movieId: parseInt(movieId)
+    const reviews = await prisma.review.findMany({
+      where: { movieId: parseInt(movieId) },
+      select: { rating: true }
+    });
+    
+    if (reviews.length === 0) {
+      return res.json({ 
+        average: 0, 
+        count: 0, 
+        movieId: parseInt(movieId) 
       });
     }
+    
+    const totalRating = reviews.reduce((sum, review) => sum + review.rating, 0);
+    const average = totalRating / reviews.length;
+    
+    res.json({
+      average: parseFloat(average.toFixed(1)),
+      count: reviews.length,
+      movieId: parseInt(movieId)
+    });
   } catch (err) {
     console.error("Error al obtener promedio:", err);
     res.status(500).json({ error: "Error interno del servidor" });

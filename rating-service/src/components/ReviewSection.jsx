@@ -161,7 +161,7 @@ function ReviewSection() {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const { movieId } = useParams();
 
-  const API_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001';
+  const API_URL = 'http://localhost:3001';
 
   useEffect(() => {
     if (!movieId) return;

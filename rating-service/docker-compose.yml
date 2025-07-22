@@ -19,6 +19,7 @@ services:
       - DATABASE_URL=mysql://root:root@db:3306/reviewsdb
     depends_on:
       - db
+    restart: unless-stopped
 
   db:
     image: mysql:8
