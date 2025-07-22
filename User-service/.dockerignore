@@ -1,0 +1,8 @@
+node_modules
+.git
+.env
+Dockerfile
+docker-compose.yaml
+README.md
+.vscode
+.next/cache

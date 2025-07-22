@@ -1,0 +1,177 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(27, 18, 21, 0.60);
+  backdrop-filter: blur(4px);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  background: rgba(27, 18, 21, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  padding: 40px 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-weight: 500;
+  color: white;
+  animation: fadeIn 0.2s;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #2c97eb;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+.closeBtn:hover {
+  color: #f74e4a;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: white;
+  width: 100%;
+  padding-left: 0; /* puedes ajustar si quieres padding */
+}
+
+.subtitle {
+  color: white;
+  margin-bottom: 24px;
+  font-size: 12px;
+  width: 100%;
+  padding-left: 0;
+}
+
+.input {
+  width: 100%;
+  padding: 12px;
+  border: 3px solid #324dd3;
+  border-radius: 12px;
+  font-size: 14px;
+  background-color: rgba(27, 27, 27, .9);
+  color: white;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+}
+
+.mainBtn {
+  padding: 14px;
+  background-color: #324dd3;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+  transition: background-color 0.2s;
+}
+
+.mainBtn:hover {
+  background-color: #2839a8;
+}
+
+.recaptcha {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  min-height: 48px;
+}
+
+.recaptchaBox {
+  background: #fff;
+  border-radius: 8px;
+  border: 1.5px solid #dadce0;
+  box-shadow: 0 2px 8px rgba(20,20,20,0.09);
+  display: flex;
+  align-items: center;
+  padding: 6px 12px 6px 10px;
+  min-height: 48px;
+  min-width: 270px;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.captchaCheckbox {
+  width: 18px;
+  height: 18px;
+  accent-color: #4285f4; /* Opcional, mejora el color del check */
+}
+
+.captchaLabel {
+  color: #222;
+  font-size: 15px;
+  font-weight: 400;
+  margin-left: 6px;
+}
+
+.recaptchaImg {
+  margin-left: auto;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.recaptchaError {
+  color: #e53e3e;
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+.signin {
+  text-align: center;
+  color: white;
+  font-size: 12px;
+  margin-top: 24px;
+}
+
+.signin a {
+  color: #4285f4;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Success & error messages */
+.success {
+  color: #38a169;
+  margin: 8px 0;
+  text-align: center;
+  font-size: 14px;
+}
+
+.error {
+  color: #e53e3e;
+  margin: 8px 0;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Animación opcional */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98);}
+  to { opacity: 1; transform: scale(1);}
+}
