@@ -14,17 +14,17 @@ spec:
     spec:
       containers:
         - name: api-user-saga
-          image: judajaav/api-user-saga:latest
+          image: juankarlos1517/api-user-saga:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
           env:
-              - name: REGISTER_SERVICE_URL
-                value: "http://register-user.default.svc.cluster.local/"
-              - name: LOGIN_SERVICE_URL
-                value: "http://login-user.default.svc.cluster.local/"
-              - name: EMAIL_SERVICE_URL
-                value: "http://email-user.default.svc.cluster.local/"
+            - name: REGISTER_SERVICE_URL
+              value: "http://api-user-register.default.svc.cluster.local"
+            - name: LOGIN_SERVICE_URL
+              value: "http://api-user-login.default.svc.cluster.local"
+            - name: EMAIL_SERVICE_URL
+              value: "http://api-user-email.default.svc.cluster.local"
 
 ---
 apiVersion: v1

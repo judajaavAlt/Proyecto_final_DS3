@@ -16,40 +16,38 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
-# URLs internas del docker-compose, ahora por variable de entorno
+# URLs de servicios desde variables de entorno
 REGISTER_SERVICE_URL = os.getenv("REGISTER_SERVICE_URL")
 LOGIN_SERVICE_URL = os.getenv("LOGIN_SERVICE_URL")
 EMAIL_SERVICE_URL = os.getenv("EMAIL_SERVICE_URL")
 
-USER_SERVICE_URL = REGISTER_SERVICE_URL+"/register/"
-EMAIL_SERVICE_URL = EMAIL_SERVICE_URL+"/send-confirmation/"
-DELETE_USER_URL = REGISTER_SERVICE_URL+"/users/"
-VERIFY_USER_URL = REGISTER_SERVICE_URL+"/confirmar/"
-WELCOME_EMAIL_URL = EMAIL_SERVICE_URL+"/send-welcome/"
-LOGIN_SERVICE_URL = LOGIN_SERVICE_URL+"/login/"
+# Endpoints individuales
+USER_REGISTER_URL = f"{REGISTER_SERVICE_URL}/register/"
+USER_DELETE_URL = f"{REGISTER_SERVICE_URL}/users/"
+USER_VERIFY_URL = f"{REGISTER_SERVICE_URL}/confirmar/"
+USER_LOGIN_URL = f"{LOGIN_SERVICE_URL}/login/"
 
-# Modelo de usuario
+EMAIL_CONFIRM_URL = f"{EMAIL_SERVICE_URL}/send-confirmation/"
+EMAIL_WELCOME_URL = f"{EMAIL_SERVICE_URL}/send-welcome/"
+
+# Modelos de datos
 class User(BaseModel):
     username: str
     email: EmailStr
     password: str
 
-# Modelo de usuario
 class LoginUser(BaseModel):
     email_or_username: str  # Puede ser email o username
     password: str
-
 
 @app.post("/register/")
 async def saga_register(user: User):
     async with httpx.AsyncClient() as client:
         # Paso 1: Registrar usuario
-        r = await client.post(USER_SERVICE_URL, json=user.dict())
+        r = await client.post(USER_REGISTER_URL, json=user.dict())
         if r.status_code != 200:
             print("Error en registro:", r.text)
             try:
-        # Intenta extraer el mensaje específico del user-service
                 detail = r.json().get("detail", "No se pudo crear usuario")
             except Exception:
                 detail = "No se pudo crear usuario"
@@ -62,10 +60,10 @@ async def saga_register(user: User):
             raise HTTPException(status_code=500, detail="No se pudo obtener el token")
 
         # Paso 2: Enviar email de confirmación
-        resp = await client.post(EMAIL_SERVICE_URL, json={"email": email, "token": token})
+        resp = await client.post(EMAIL_CONFIRM_URL, json={"email": email, "token": token})
         if resp.status_code != 200:
             # Compensación: eliminar usuario
-            await client.delete(f"{DELETE_USER_URL}{email}")
+            await client.delete(f"{USER_DELETE_URL}{email}")
             raise HTTPException(status_code=500, detail="No se pudo enviar email, registro revertido")
 
         return {"message": "Usuario creado y email enviado correctamente."}
@@ -73,8 +71,8 @@ async def saga_register(user: User):
 @app.get("/confirmar/")
 async def saga_confirmar(token: str):
     async with httpx.AsyncClient() as client:
-        # Paso 1: Verificar usuario en user-service
-        r = await client.get(VERIFY_USER_URL, params={"token": token})
+        # Paso 1: Verificar usuario
+        r = await client.get(USER_VERIFY_URL, params={"token": token})
         if r.status_code != 200:
             print("Error en confirmación:", r.text)
             raise HTTPException(status_code=400, detail="No se pudo verificar usuario")
@@ -85,7 +83,7 @@ async def saga_confirmar(token: str):
             raise HTTPException(status_code=500, detail="Usuario verificado, pero no se pudo obtener el email")
 
         # Paso 2: Enviar email de bienvenida
-        resp = await client.post(WELCOME_EMAIL_URL, json={"email": email})
+        resp = await client.post(EMAIL_WELCOME_URL, json={"email": email})
         if resp.status_code != 200:
             print("Error enviando correo de bienvenida:", resp.text)
             return {"message": "Usuario verificado, pero no se pudo enviar el correo de bienvenida."}
@@ -95,7 +93,7 @@ async def saga_confirmar(token: str):
 @app.post("/login/")
 async def saga_login(user: LoginUser):
     async with httpx.AsyncClient() as client:
-        r = await client.post(LOGIN_SERVICE_URL, json=user.dict())
+        r = await client.post(USER_LOGIN_URL, json=user.dict())
         if r.status_code != 200:
             try:
                 detail = r.json().get("detail", "No se pudo iniciar sesión")

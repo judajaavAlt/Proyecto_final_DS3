@@ -33,10 +33,15 @@ export default function LoginModal() {
     }
     
     try {
-      await loginUser({
+      const response = await loginUser({
         email_or_username: form.email_or_username,
         password: form.password,
       });
+      // Guardar el JWT en la cookie 'session' por 12 horas
+      if (response.token) {
+        const expires = new Date(Date.now() + 12 * 60 * 60 * 1000).toUTCString();
+        document.cookie = `session=${response.token}; expires=${expires}; path=/`;
+      }
       setSuccess("¡Inicio de sesión exitoso!");
       setForm({
         email_or_username: "",
