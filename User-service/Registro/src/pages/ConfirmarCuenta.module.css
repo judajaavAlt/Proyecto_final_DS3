@@ -1,0 +1,76 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e1b2e 0%, #3a2c5a 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Roboto', 'Montserrat', sans-serif;
+}
+
+.card {
+  background: rgba(28, 25, 43, 0.95);
+  padding: 40px 50px;
+  border-radius: 18px;
+  box-shadow: 0 10px 28px rgba(60, 50, 100, 0.6), 0 2px 4px rgba(30, 20, 60, 0.5);
+  text-align: center;
+  border: 3px solid #a583ff; /* color violeta */
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #a583ff; /* violeta */
+  font-family: 'Bebas Neue', 'Montserrat', sans-serif;
+  text-shadow: 2px 2px 8px #180e3c;
+}
+
+.message {
+  font-size: 1.4rem;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.messageConfirmado {
+  color: #abff2f; /* verde lima */
+}
+
+.messageError {
+  color: #ff6b6b; /* rojo suave */
+}
+
+.messageDefault {
+  color: #a583ff; /* violeta */
+}
+
+.icon {
+  margin-right: 8px;
+  font-size: 1.7rem;
+}
+
+.button {
+  padding: 12px 36px;
+  background: #a583ff; /* violeta */
+  color: #222831;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.2rem;
+  box-shadow: 0 3px 10px rgba(100, 80, 180, 0.4);
+  margin-top: 10px;
+  transition: background 0.2s;
+}
+
+.button:hover {
+  background: #866ed9; /* violeta más oscuro al pasar */
+}
+
+.footer {
+  margin-top: 40px;
+  color: #888;
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
