@@ -36,7 +36,7 @@ spec:
             - name: EMAIL_FROM
               value: juankarlos1517@gmail.com
             - name: FRONTEND_URL
-              value: frontend-user-register.default.svc.cluster.local
+              value: http://localhost:4000/register
 
 ---
 apiVersion: v1

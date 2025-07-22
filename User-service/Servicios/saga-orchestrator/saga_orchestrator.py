@@ -68,7 +68,7 @@ async def saga_register(user: User):
 
         return {"message": "Usuario creado y email enviado correctamente."}
 
-@app.get("/confirmar/")
+@app.get("/saga/confirmar/")
 async def saga_confirmar(token: str):
     async with httpx.AsyncClient() as client:
         # Paso 1: Verificar usuario

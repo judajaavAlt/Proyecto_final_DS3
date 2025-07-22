@@ -11,7 +11,8 @@ export function useConfirmarCuenta() {
 
     if (!token) return;
 
-    fetch(`http://localhost:4000/saga/confirmar-cuenta?token=${token}/`)
+    // Llama a la API interna de Next.js (¡NO al saga directo!)
+    fetch(`http://localhost:4000/saga/confirmar?token=${token}`)
       .then(async res => {
         const data = await res.json();
         if (res.ok) {

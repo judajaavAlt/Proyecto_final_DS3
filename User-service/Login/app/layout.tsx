@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import "./globals.css";
 
 // Pon esto arriba de tu función
 export const metadata: Metadata = {

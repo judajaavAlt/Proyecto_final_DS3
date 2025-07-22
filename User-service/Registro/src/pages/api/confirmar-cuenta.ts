@@ -7,17 +7,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   const { token } = req.query;
-  const baseUrl = process.env.INTERNAL_API_URL || "http://saga-orchestrator:8000/saga";
+  if (!token || typeof token !== "string") {
+    return res.status(400).json({ detail: "Token requerido en query string" });
+  }
 
   try {
-    const response = await fetch(`${baseUrl}/confirmar?token=${token}`);
+    // Llama directo al nginx gateway local (con port-forward activo)
+    const response = await fetch(`http://localhost:4000/saga/confirmar?token=${encodeURIComponent(token)}`);
     const data = await response.json();
     res.status(response.status).json(data);
-  } catch (error: unknown) {
-  let message = "Error interno del servidor";
-  if (error instanceof Error) {
-    message = error.message;
+  } catch (error) {
+    res.status(500).json({ detail: "Error interno del servidor" });
   }
-  res.status(500).json({ detail: message });
-}
 }

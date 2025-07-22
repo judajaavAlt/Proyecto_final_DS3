@@ -58,8 +58,8 @@ export default function LoginModal() {
   if (!isVisible) return null;
 
   return (
-    <div className={styles.container}>
-      <div className={styles.loginBox}>
+    <div className={styles.overlay}>
+      <div className={styles.modal}>
         <button 
           className={styles.closeButton}
           onClick={handleClose}
