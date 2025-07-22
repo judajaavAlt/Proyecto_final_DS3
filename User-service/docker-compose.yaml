@@ -1,0 +1,71 @@
+services:
+  # FRONTEND REGISTRO
+  frontend-registro:
+    build:
+      context: ./Registro
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - saga-orchestrator
+
+  # FRONTEND LOGIN
+  frontend-login:
+    build:
+      context: ./login
+      dockerfile: Dockerfile
+      args:
+       PORT: 4200
+    ports:
+      - "4200:4200"
+    depends_on:
+      - saga-orchestrator
+
+  # SAGA ORCHESTRATOR (nuevo)
+  saga-orchestrator:
+    build:
+      context: ./Servicios/saga-orchestrator
+      dockerfile: Dockerfile
+    depends_on:
+      - user-service
+      - email-service
+
+  # USER SERVICE (registro de usuarios)
+  user-service:
+    build:
+      context: ./Servicios/user-service
+      dockerfile: Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+  # LOGIN SERVICE (Login de usuarios)
+  login-service:
+    build: 
+      context: ./Servicios/login-service
+      dockerfile: Dockerfile
+    depends_on:
+     db:
+      condition: service_healthy
+
+  # EMAIL SERVICE (microservicio de correos)
+  email-service:
+    build:
+      context: ./Servicios/email-service
+      dockerfile: Dockerfile
+
+  # BASE DE DATOS
+  db:
+    image: postgres:16
+    restart: always
+    env_file:
+      - .env.db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "AJLN", "-d", "User"]
+      interval: 10s
+      retries: 5
+
+volumes:
+  postgres_data:
