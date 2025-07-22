@@ -1,0 +1,115 @@
+.borderGF {
+  position: absolute;
+  background: var(--gold);
+  transition: all 0.5s ease;
+}
+
+/* Borde superior/inferior inicial muy corto */
+.borderGF.top,
+.borderGF.bottom {
+  height: 5px;
+  width: 15px;
+}
+
+.borderGF.top2,
+.borderGF.bottom2 {
+  height: 15px;
+  width: 5px;
+}
+
+/* Borde izquierdo/derecho inicial muy corto */
+.borderGF.left,
+.borderGF.right {
+  width: 5px;
+  height: 15px;
+}
+
+.borderGF.left2,
+.borderGF.right2 {
+  width: 15px;
+  height: 5px;
+}
+
+/* Posicionamiento inicial de cada uno */
+.borderGF.top {
+  top: 8%;
+  left: 8%;
+}
+.borderGF.top2 {
+  top: 8%;
+  left: 8%;
+}
+
+.borderGF.right {
+  top: 8%;
+  right: 8%;
+}
+.borderGF.right2 {
+  top: 8%;
+  right: 8%;
+}
+
+.borderGF.bottom {
+  bottom: 8%;
+  right: 8%;
+}
+.borderGF.bottom2 {
+  bottom: 8%;
+  right: 8%;
+}
+
+.borderGF.left {
+  bottom: 8%;
+  left: 8%;
+}
+.borderGF.left2 {
+  bottom: 8%;
+  left: 8%;
+}
+
+/* Contenido central */
+.contentGF {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 1rem 1.5rem;
+  background: var(--gold);
+  color: var(--gold);
+  transform: translate(-50%, -50%) scale(1);
+  text-align: center;
+  transition: all 0.5s ease;
+  border-radius: 4px;
+  opacity: 0;
+}
+
+/* Estado hover: animamos bordes y contenido */
+a:hover .borderGF.top,
+a:hover .borderGF.bottom {
+  width: 45%;
+  background: var(--red-light);
+}
+
+a:hover .borderGF.left,
+a:hover .borderGF.right {
+  height: 45%;
+  background: var(--red-light);
+}
+
+a:hover .borderGF.top2,
+a:hover .borderGF.bottom2 {
+  height: 42%;
+  background: var(--red-light);
+}
+
+a:hover .borderGF.left2,
+a:hover .borderGF.right2 {
+  width: 42%;
+  background: var(--red-light);
+}
+
+a:hover .contentGF {
+  transform: translate(-50%, -50%) scale(1.05);
+  background: var(--red-light);
+  color: var(--text-base);
+  opacity: 1;
+}

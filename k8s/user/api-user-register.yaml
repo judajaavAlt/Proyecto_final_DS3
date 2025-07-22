@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-user-register
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-user-register
+  template:
+    metadata:
+      labels:
+        app: api-user-register
+    spec:
+      containers:
+        - name: api-user-register
+          image: judajaav/api-user-register:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
+          env:
+            - name: DB_USER
+              value: user
+            - name: DB_PASSWORD
+              value: userpass
+            - name: DB_NAME
+              value: userdb
+            - name: DB_HOST
+              value: db-user.default.svc.cluster.local
+            - name: DB_PORT
+              value: "5432"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-user-register
+spec:
+  selector:
+    app: api-user-register
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+  type: ClusterIP

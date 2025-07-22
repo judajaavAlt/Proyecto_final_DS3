@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front-user-register
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: front-user-register
+  template:
+    metadata:
+      labels:
+        app: front-user-register
+    spec:
+      containers:
+        - name: frontend
+          image: juankarlos1517/front-user-register:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: front-user-register
+spec:
+  selector:
+    app: front-user-register
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+  type: ClusterIP
