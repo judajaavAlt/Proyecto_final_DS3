@@ -4,10 +4,10 @@ import { Movie } from "../types/movie";
 const getApiBaseUrl = () => {
   // En el servidor (Server Components), usar la URL del servicio Docker
   if (typeof window === "undefined") {
-    return "http://backend:3001";
+    return "http://localhost:4000/api/movie";
   }
   // En el cliente, usar localhost
-  return "http://localhost:3001";
+  return "http://localhost:4000/api/movie";
 };
 
 // Función para obtener todas las películas desde el backend API
