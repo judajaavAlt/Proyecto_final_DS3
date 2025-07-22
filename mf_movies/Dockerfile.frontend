@@ -1,6 +1,10 @@
 # Usa la imagen oficial de Node.js
 FROM node:18-alpine
 
+# Define las variables de ambiente
+ARG NEXT_PUBLIC_API_URL
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+
 # Instala pnpm
 RUN npm install -g pnpm
 

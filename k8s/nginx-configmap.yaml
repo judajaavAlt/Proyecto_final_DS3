@@ -11,6 +11,20 @@ data:
         server {
             listen 80;
 
+            ## Movie service
+            location /api/movie/ {
+                rewrite ^/api/movie/(.*)$ /$1 break;
+                proxy_pass http://api-movie.default.svc.cluster.local;
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+            }
+
+            location / {
+                proxy_pass http://front-movie.default.svc.cluster.local;
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+            }
+
             ## User service
             location /login/ {
                 proxy_pass http://front-user-login.default.svc.cluster.local;
