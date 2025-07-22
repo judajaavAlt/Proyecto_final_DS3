@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from db_connection import Database
@@ -81,3 +81,17 @@ async def login_user(user: LoginUser):
         raise http_exc
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/verify-session/")
+async def verify_session(request: Request):
+    session_cookie = request.cookies.get("session")
+    if not session_cookie:
+        raise HTTPException(status_code=401, detail="No session cookie")
+    try:
+        payload = jwt.decode(session_cookie, SECRET_KEY, algorithms=[ALGORITHM])
+        return {
+            "username": payload["username"],
+            "email": payload["email"]
+        }
+    except Exception:
+        raise HTTPException(status_code=401, detail="Invalid session")
