@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-rating
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend-rating
+  template:
+    metadata:
+      labels:
+        app: frontend-rating
+    spec:
+      containers:
+        - name: frontend
+          image: my-frontend-image:latest
+          ports:
+            - containerPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-rating
+spec:
+  selector:
+    app: frontend-rating
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP
