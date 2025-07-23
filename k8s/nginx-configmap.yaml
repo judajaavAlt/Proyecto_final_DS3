@@ -31,6 +31,12 @@ data:
                 proxy_set_header X-Real-IP $remote_addr;
             }
 
+            location /confirmar {
+            proxy_pass http://api-user-saga.default.svc.cluster.local/confirmar;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+        }
+
             
 
             # Frontend services
