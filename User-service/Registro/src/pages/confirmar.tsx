@@ -24,12 +24,9 @@ export default function ConfirmarCuenta() {
           {mensaje}
         </div>
         {confirmado !== null && (
-          <button
-            className={styles.button}
-            onClick={() => router.push("/login")}
-          >
+          <a href="http://localhost:4000/login/" className={styles.button}>
             Ir al login 🍿
-          </button>
+          </a>
         )}
       </div>
       <footer className={styles.footer}>
