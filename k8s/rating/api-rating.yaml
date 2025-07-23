@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: api-rating
-          image: judajaav/api-rating:latest
+          image: juankarlos1517/api-rating:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 3001
@@ -31,6 +31,8 @@ spec:
               value: ratingpass
             - name: AUTH_SERVICE_URL
               value: http://api-saga.default.svc.cluster.local
+            - name: DATABASE_URL
+              value: postgresql://rating:ratingpass@db-rating:5432/ratingdb
 
 ---
 apiVersion: v1

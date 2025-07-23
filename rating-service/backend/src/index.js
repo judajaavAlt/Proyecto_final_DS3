@@ -4,7 +4,7 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const app = express();
 
-const PORT = process.env.PORT || 3001;
+const PORT = 3001;
 const AUTH_SERVICE_URL = process.env.AUTH_SERVICE_URL || 'http://localhost:4000';
 
 const { PrismaClient } = require('@prisma/client');
@@ -100,15 +100,12 @@ app.post('/reviews', async (req, res) => {
         text: comment,
         rating: Number(rating),
         userId: userId, // Usa el ID real del usuario autenticado
-        movieId: parseInt(movieId)
+        movieId: parseInt(movieId),
+        author: sessionValidation.username // Agrega el nombre de usuario
       },
     });
     // Agregar solo el nombre del usuario autenticado a la respuesta
-    const reviewWithUser = {
-      ...newReview,
-      author: sessionValidation.username
-    };
-    res.status(201).json(reviewWithUser);
+    res.status(201).json(newReview);
   } catch (error) {
     console.error('❌ [POST] Error al crear reseña:', error);
     res.status(500).json({ error: 'Error interno del servidor' });

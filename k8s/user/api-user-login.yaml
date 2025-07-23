@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: api-user-login
-          image: judajaav/api-user-login:latest
+          image: juankarlos1517/api-user-login:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 6000

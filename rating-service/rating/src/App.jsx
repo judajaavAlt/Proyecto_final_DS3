@@ -15,7 +15,7 @@ function App() {
   };
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/rating/">
       <Routes>
         <Route path="/review/:movieId" element={<ReviewSection />} />
       </Routes>

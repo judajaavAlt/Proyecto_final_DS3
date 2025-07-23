@@ -14,11 +14,13 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: judajaav/front-rating:latest
+          image: juankarlos1517/front-rating:latest
           imagePullPolicy: Always
           ports:
-            - containerPort: 4173
-
+            - containerPort: 3000   # El contenedor corre en 3000 (serve -l 3000)
+          env:
+            - name: VITE_API_URL
+              value: http://api-rating.default.svc.cluster.local
 ---
 apiVersion: v1
 kind: Service
@@ -30,5 +32,5 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 4173
+      targetPort: 3000    # El contenedor expone 3000
   type: ClusterIP

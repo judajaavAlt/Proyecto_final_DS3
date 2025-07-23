@@ -15,7 +15,7 @@ const LoginModal = ({ isOpen, onClose, onLoginSuccess }) => {
           <div className="login-modal-buttons">
             <button 
               className="login-btn"
-              onClick={() => window.location.href = '/login'}
+              onClick={() => window.location.href = 'http://localhost:4000/login'}
             >
               Ir al login
             </button>
@@ -161,7 +161,7 @@ function ReviewSection() {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const { movieId } = useParams();
 
-  const API_URL = 'http://localhost:3001';
+  const API_URL = import.meta.env.VITE_API_URL;; // URL del microservicio de reseñas
 
   useEffect(() => {
     if (!movieId) return;

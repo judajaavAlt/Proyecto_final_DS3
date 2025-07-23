@@ -1,14 +1,12 @@
--- Crea la base de datos (si no existe)
-CREATE DATABASE IF NOT EXISTS reviewsdb;
-USE reviewsdb;
+-- ¡No es necesario crear la base de datos aquí! 
+-- La base "ratingdb" ya se crea con la variable POSTGRES_DB
 
--- Crea la tabla de reseñas
 CREATE TABLE IF NOT EXISTS reviews (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     userId INT NOT NULL,
     movieId INT NOT NULL,
     text TEXT NOT NULL,
     rating FLOAT NOT NULL,
-    date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     author VARCHAR(255)
-); 
+);

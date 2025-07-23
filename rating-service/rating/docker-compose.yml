@@ -3,18 +3,20 @@ services:
   frontend:
     build:
       context: .
-      dockerfile: Dockerfile.frontend
+      dockerfile: Dockerfile
     ports:
-      - "4173:4173"
+      - "3000:3000"
     working_dir: /app
 
   backend:
     build:
       context: ./backend
-      dockerfile: Dockerfile.backend
+      dockerfile: Dockerfile
     ports:
       - "3001:3001"
     working_dir: /app
+    env_file:
+      - ./backend/.env   # Ruta relativa a tu compose
     environment:
       - DATABASE_URL=mysql://root:root@db:3306/reviewsdb
     depends_on:
