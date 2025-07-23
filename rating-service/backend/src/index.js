@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const app = express();
 
 const PORT = process.env.PORT || 3001;
-const AUTH_SERVICE_URL = process.env.AUTH_SERVICE_URL || 'http://localhost:3002/validate-session';
+const AUTH_SERVICE_URL = process.env.AUTH_SERVICE_URL || 'http://localhost:4000';
 
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();

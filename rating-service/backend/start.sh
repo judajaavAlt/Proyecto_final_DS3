@@ -4,5 +4,5 @@ until mysqladmin ping -h"db" -P"3306" --silent; do
   sleep 2
 done
 npx prisma generate
-npx prisma migrate deploy
+npx prisma db push
 npm start 
