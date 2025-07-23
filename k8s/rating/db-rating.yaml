@@ -4,12 +4,20 @@ metadata:
   name: init-db-rating
 data:
   init.sql: |
-    CREATE TABLE ratings (
-      id SERIAL PRIMARY KEY,
-      score INTEGER NOT NULL
-    );
+    -- Crea la base de datos (si no existe)
+    CREATE DATABASE IF NOT EXISTS reviewsdb;
+    USE reviewsdb;
 
-    INSERT INTO ratings (score) VALUES (5), (4);
+    -- Crea la tabla de reseñas
+    CREATE TABLE IF NOT EXISTS reviews (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        userId INT NOT NULL,
+        movieId INT NOT NULL,
+        text TEXT NOT NULL,
+        rating FLOAT NOT NULL,
+        date DATETIME DEFAULT CURRENT_TIMESTAMP,
+        author VARCHAR(255)
+    ); 
 ---
 apiVersion: v1
 kind: Service
