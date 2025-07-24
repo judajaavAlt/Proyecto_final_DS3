@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import styles from "./LoginModal.module.css";
-import { loginUser } from "../../lib/loginUser";
+import { loginUser } from "../../lib/authService"; // Asegúrate de que la ruta sea correcta
 
 export default function LoginModal() {
   const [form, setForm] = useState({
@@ -38,10 +38,6 @@ export default function LoginModal() {
         password: form.password,
       });
       // Guardar el JWT en la cookie 'session' por 12 horas
-      if (response.token) {
-        const expires = new Date(Date.now() + 12 * 60 * 60 * 1000).toUTCString();
-        document.cookie = `session=${response.token}; expires=${expires}; path=/`;
-      }
       setSuccess("¡Inicio de sesión exitoso!");
       setForm({
         email_or_username: "",

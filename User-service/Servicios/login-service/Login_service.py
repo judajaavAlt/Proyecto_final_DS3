@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from db_connection import Database
 import jwt
@@ -20,7 +21,7 @@ ALGORITHM = "HS256"
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["http://localhost:4000"],  # Cambia aquí si tu frontend está en otro puerto
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -57,7 +58,7 @@ async def login_user(user: LoginUser):
 
         if not result:
             raise HTTPException(status_code=401, detail="Credenciales inválidas o usuario no verificado")
-
+        
         user_data = dict(result[0])
         payload = {
             "user_id": user_data["id"],
@@ -67,15 +68,29 @@ async def login_user(user: LoginUser):
         }
         token = jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
 
-        return {
-            "message": "Inicio de sesión exitoso",
-            "token": token,
-            "user": {
-                "id": user_data["id"],
-                "username": user_data["username"],
-                "email": user_data["email"]
+        # --- ¡La respuesta debe ser un JSONResponse para setear la cookie! ---
+        response = JSONResponse(
+            content={
+                "message": "Inicio de sesión exitoso",
+                "token": token,
+                "user": {
+                    "id": user_data["id"],
+                    "username": user_data["username"],
+                    "email": user_data["email"]
+                }
             }
-        }
+        )
+        response.set_cookie(
+            key="session",
+            value=token,
+            httponly=False,         # True para mayor seguridad (y no accesible en JS)
+            samesite="Lax",
+            path="/",
+            secure=False,           # True en producción con HTTPS
+            max_age=60 * 60 * 12
+        )
+
+        return response
 
     except HTTPException as http_exc:
         raise http_exc

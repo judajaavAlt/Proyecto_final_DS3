@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front-rating
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: front-rating
+  template:
+    metadata:
+      labels:
+        app: front-rating
+    spec:
+      containers:
+        - name: frontend
+          image: juankarlos1517/front-rating:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000   # El contenedor corre en 3000 (serve -l 3000)
+          env:
+            - name: VITE_API_URL
+              value: http://api-rating.default.svc.cluster.local
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: front-rating
+spec:
+  selector:
+    app: front-rating
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000    # El contenedor expone 3000
+  type: ClusterIP

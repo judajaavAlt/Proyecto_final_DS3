@@ -25,6 +25,8 @@ spec:
               value: "http://api-user-login.default.svc.cluster.local"
             - name: EMAIL_SERVICE_URL
               value: "http://api-user-email.default.svc.cluster.local"
+            - name: VERIFY_SERVICE_URL
+              value: "http://api-user-register.default.svc.cluster.local/confirmar"
 
 ---
 apiVersion: v1
