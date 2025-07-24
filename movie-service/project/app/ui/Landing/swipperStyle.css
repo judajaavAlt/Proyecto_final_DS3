@@ -1,0 +1,62 @@
+.swiper-button-prev,
+.swiper-button-next {
+  color: var(--red-light) !important;
+  padding: 0 30px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  width: 50px !important;
+  height: 50px !important;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  background: rgba(0, 0, 0, 0.5);
+  transform: scale(1.1);
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 20px !important;
+  font-weight: bold;
+}
+
+.swiper-pagination {
+  bottom: 20px !important;
+}
+
+.swiper-pagination-bullet {
+  background: #fff !important;
+  opacity: 0.5 !important;
+  width: 12px !important;
+  height: 12px !important;
+  margin: 0 6px !important;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--red-light) !important;
+  opacity: 1 !important;
+  transform: scale(1.2);
+}
+
+/* Mejorar el espaciado del contenedor */
+.swiper-container {
+  padding: 0 20px;
+}
+
+/* Responsive para controles de navegación */
+@media (max-width: 768px) {
+  .swiper-button-prev,
+  .swiper-button-next {
+    padding: 0 20px;
+    width: 40px !important;
+    height: 40px !important;
+  }
+  
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    font-size: 16px !important;
+  }
+}

@@ -1,0 +1,71 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: init-db-rating
+data:
+  init.sql: |
+    -- Crea la base de datos (si no existe)
+    CREATE DATABASE IF NOT EXISTS reviewsdb;
+    USE reviewsdb;
+
+    -- Crea la tabla de reseñas
+    CREATE TABLE IF NOT EXISTS reviews (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        userId INT NOT NULL,
+        movieId INT NOT NULL,
+        text TEXT NOT NULL,
+        rating FLOAT NOT NULL,
+        date DATETIME DEFAULT CURRENT_TIMESTAMP,
+        author VARCHAR(255)
+    ); 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: db-rating
+spec:
+  selector:
+    app: db-rating
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-rating
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db-rating
+  template:
+    metadata:
+      labels:
+        app: db-rating
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:15
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_USER
+              value: rating
+            - name: POSTGRES_PASSWORD
+              value: ratingpass
+            - name: POSTGRES_DB
+              value: ratingdb
+          volumeMounts:
+            - name: postgres-storage
+              mountPath: /var/lib/postgresql/data
+            - name: init-script
+              mountPath: /docker-entrypoint-initdb.d
+      volumes:
+        - name: postgres-storage
+          emptyDir: {}
+        - name: init-script
+          configMap:
+            name: init-db-rating
